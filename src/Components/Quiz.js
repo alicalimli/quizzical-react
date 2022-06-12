@@ -1,8 +1,15 @@
 const Quiz = () => {
   return (
-    <div>
-      <h1>Quiz 1</h1>
-      <h1>Quiz 2</h1>
+    <div className="quizzes-container">
+      <div className="quiz-container">
+        <h1 className="quiz-question">What is an API</h1>
+        <ul className="quiz-answers">
+          <li className="quiz-answer">Its an API</li>
+          <li className="quiz-answer">Its an API</li>
+          <li className="quiz-answer">Its an API</li>
+          <li className="quiz-answer">Its an API</li>
+        </ul>
+      </div>
     </div>
   );
 };
