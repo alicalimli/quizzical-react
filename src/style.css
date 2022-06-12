@@ -4,9 +4,19 @@
   box-sizing: border-box;
   font-family: "Karla", sans-serif;
   text-decoration: none;
+  color: #293264;
   border: none;
   padding: 0;
+  list-style: none;
   margin: 0;
+}
+
+body {
+  background-color: #f5f7fb;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
@@ -53,6 +63,25 @@ button:hover,
 
 .start-btn {
   margin-top: 1rem;
+}
+
+/* QUIZZES */
+
+.quizzes-container {
+}
+
+.quiz-container {
+}
+
+.quiz-question {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.quiz-answers {
+}
+
+.quiz-answer {
 }
 
 @media screen and (max-width: 900px) {
