@@ -5,7 +5,7 @@ const Start = () => {
     <div className="start-container">
       <h1>Quizzical</h1>
       <p>Answer fun trivia questions! </p>
-      <Link to="/" className="btn start-btn">
+      <Link to="/quiz" className="btn start-btn">
         Start quiz
       </Link>
     </div>
