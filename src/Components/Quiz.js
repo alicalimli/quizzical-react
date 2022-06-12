@@ -121,6 +121,7 @@ const Quiz = () => {
           </li>
         </ul>
       </div>
+      <button className="btn btn-check-answers">Check answers</button>
     </div>
   );
 };
