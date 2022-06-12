@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { StrictMode } from "react";
+
 const App = () => {
   return (
-    <div className="start-container">
-      <h1>Quizzical</h1>
-      <p>Answer fun trivia questions! </p>
-      <button className="start-btn">Start quiz</button>
-    </div>
+    <StrictMode>
+      <BrowserRouter></BrowserRouter>
+    </StrictMode>
   );
 };
 
