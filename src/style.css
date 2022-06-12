@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@300;500;600&display=swap");
+
 * {
   box-sizing: border-box;
+  font-family: "Karla", sans-serif;
   text-decoration: none;
   border: none;
   padding: 0;
