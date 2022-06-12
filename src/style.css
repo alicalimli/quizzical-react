@@ -1,4 +1,10 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
+@media screen and (max-width: 900px) {
+}
