@@ -1,6 +1,8 @@
 node_modules
 .parcel-cache
 parcel-cache
-.dist
-dist
-*.env
+dist/
+.env
+coverage/
+.vsc
+.DS_Store
