@@ -20,7 +20,8 @@ p {
   line-height: 19px;
 }
 
-button {
+button,
+.btn {
   cursor: pointer;
   padding: 1rem 2rem;
   color: white;
@@ -31,7 +32,8 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover,
+.btn:hover {
   background-color: #6470ac;
 }
 
