@@ -1,5 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Home from "./Components/Home";
+const App = () => {
+  return (
+    <div className="start-container">
+      <h1>Quizzical</h1>
+      <p>Answer fun trivia questions! </p>
+      <button className="start-btn">Start quiz</button>
+    </div>
+  );
+};
 
-ReactDOM.render(<Home />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
