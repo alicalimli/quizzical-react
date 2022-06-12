@@ -1,11 +1,12 @@
+import { useState } from "react";
+
 const Quiz = () => {
-  const answersBtnHandler = function (e) {
-    console.log(e);
-  };
+  const [answers, setAnswers] = useState({});
+  const answersBtnHandler = function (e) {};
 
   return (
     <div className="quizzes-container">
-      <div className="quiz-container">
+      <div data-question-number="1" className="quiz-container">
         <h1 className="quiz-question">
           How many cores does the Intel i7-6950X have?
         </h1>
@@ -48,7 +49,7 @@ const Quiz = () => {
           </li>
         </ul>
       </div>
-      <div className="quiz-container">
+      <div data-question-number="2" className="quiz-container">
         <h1 className="quiz-question">
           How many cores does the Intel i7-6950X have?
         </h1>
