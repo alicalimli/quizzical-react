@@ -67,6 +67,9 @@ p {
 /* QUIZZES */
 
 .quizzes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .quiz-container {
@@ -106,4 +109,12 @@ p {
 }
 
 @media screen and (max-width: 900px) {
+  .quizzes-container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .quiz-answers {
+    justify-content: center;
+  }
 }
