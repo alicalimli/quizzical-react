@@ -66,9 +66,9 @@ const Quiz = () => {
         ""
       ) : (
         <div className="quizzes-container">
-          {questions.map((data) => (
+          {questions.map((data, index) => (
             <div
-              data-question-number="1"
+              data-question-number={index + 1}
               key={data.question}
               className="quiz-container"
             >
