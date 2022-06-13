@@ -66,12 +66,15 @@ p {
 
 /* QUIZZES */
 
-.quizzes-container {
-  display: flex;
-  flex-direction: column;
+.quiz-page {
   width: 60vw;
   gap: 2rem;
   margin: 2rem 0;
+}
+
+.quizzes-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .quiz-container {
@@ -125,7 +128,7 @@ p {
   .start-container {
     width: 100%;
   }
-  .quizzes-container {
+  .quiz-page {
     width: 100%;
     text-align: center;
   }
@@ -140,11 +143,6 @@ p {
 }
 
 @media screen and (max-width: 400px) {
-  .quizzes-container {
-    width: 100%;
-    text-align: center;
-  }
-
   .start-btn {
     width: 90%;
   }
