@@ -98,7 +98,12 @@ p {
   cursor: pointer;
   padding: 0.3rem 1rem;
   border: solid 1px #4d5b9e;
-  transition: background-color 0.3s ease;
+  transform: scale(1);
+  transition: all 0.3s ease;
+}
+
+.quiz-answer-btn:active {
+  transform: scale(0.95);
 }
 
 .quiz-answer-btn:hover {
