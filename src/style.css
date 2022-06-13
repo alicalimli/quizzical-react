@@ -69,6 +69,7 @@ p {
 .quizzes-container {
   display: flex;
   flex-direction: column;
+  width: 60vw;
   gap: 2rem;
   margin: 2rem 0;
 }
@@ -132,6 +133,10 @@ p {
   .quiz-answers {
     justify-content: center;
   }
+
+  .btn-check-answers {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -141,10 +146,6 @@ p {
   }
 
   .start-btn {
-    width: 90%;
-  }
-
-  .btn-check-answers {
     width: 90%;
   }
 }

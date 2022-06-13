@@ -63,7 +63,7 @@ const Quiz = () => {
                   onClick={answersBtnHandler}
                   data-answer-type="correct"
                   data-answer-content={answer}
-                  className="active quiz-answer-btn"
+                  className="quiz-answer-btn"
                 >
                   {answer}
                 </button>
@@ -72,23 +72,6 @@ const Quiz = () => {
           </ul>
         </div>
       ))}
-      <div data-question-number="1" className="quiz-container">
-        <h1 className="quiz-question">
-          How many cores does the Intel i7-6950X have?
-        </h1>
-        <ul className="quiz-answers">
-          <li className="quiz-answer">
-            <button
-              onClick={answersBtnHandler}
-              data-answer-type="correct"
-              data-answer-content="10"
-              className="active quiz-answer-btn"
-            >
-              10
-            </button>
-          </li>
-        </ul>
-      </div>
       <button className="btn btn-check-answers">Check answers</button>
     </div>
   );
