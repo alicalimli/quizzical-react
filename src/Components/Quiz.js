@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
 const Quiz = () => {
+  const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
+
   const answersBtnHandler = function (e) {
     const btnParent = e.target.closest(".quiz-container");
     const answerBtn = e.target.closest(".quiz-answer-btn");
@@ -22,6 +24,27 @@ const Quiz = () => {
     setAnswers(Object.assign(answers, answerObj));
 
     console.log(answers);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const questionsData = await fetch(
+        "https://opentdb.com/api.php?amount=5&category=18&type=multiple"
+      );
+
+      if (!questionsData.ok) return;
+
+      const questionDataResults = await questionsData.json();
+
+      setQuestions(questionDataResults.results);
+      console.log(questions);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
