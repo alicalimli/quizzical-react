@@ -117,8 +117,8 @@ p {
 }
 
 .btn-check-answers {
-  width: 100%;
-  margin: auto;
+  width: 25rem;
+  margin: 2rem auto;
 }
 
 @media screen and (max-width: 900px) {
