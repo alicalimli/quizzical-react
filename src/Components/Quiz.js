@@ -34,6 +34,8 @@ const Quiz = () => {
 
   const fetchData = async () => {
     try {
+      setIsPending(true);
+
       const questionsData = await fetch(
         "https://opentdb.com/api.php?amount=5&category=18&type=multiple"
       );
@@ -43,38 +45,44 @@ const Quiz = () => {
       const questionDataResults = await questionsData.json();
 
       setQuestions(questionDataResults.results);
-      console.log(questions);
+
+      return setIsPending(false);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div className="quizzes-container">
-      {questions &&
-        questions.map((data) => (
-          <div
-            data-question-number="1"
-            key={data.question}
-            className="quiz-container"
-          >
-            <h1 className="quiz-question">{data.question}</h1>
-            <ul className="quiz-answers">
-              {data.incorrect_answers.map((answer) => (
-                <li className="quiz-answer" key={answer}>
-                  <button
-                    onClick={answersBtnHandler}
-                    data-answer-content={answer}
-                    className="quiz-answer-btn"
-                  >
-                    {answer}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      <button className="btn btn-check-answers">Check answers</button>
+    <div className="quiz-page">
+      {console.log(isPending)}
+      {isPending && <h1>Loading</h1>}
+      {questions && (
+        <div className="quizzes-container">
+          {questions.map((data) => (
+            <div
+              data-question-number="1"
+              key={data.question}
+              className="quiz-container"
+            >
+              <h1 className="quiz-question">{data.question}</h1>
+              <ul className="quiz-answers">
+                {data.incorrect_answers.map((answer) => (
+                  <li className="quiz-answer" key={answer}>
+                    <button
+                      onClick={answersBtnHandler}
+                      data-answer-content={answer}
+                      className="quiz-answer-btn"
+                    >
+                      {answer}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <button className="btn btn-check-answers">Check answers</button>
+        </div>
+      )}
     </div>
   );
 };
