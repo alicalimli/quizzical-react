@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
+  const [isPending, setIsPending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const answersBtnHandler = function (e) {
     const btnParent = e.target.closest(".quiz-container");
@@ -49,28 +51,29 @@ const Quiz = () => {
 
   return (
     <div className="quizzes-container">
-      {questions.map((data) => (
-        <div
-          data-question-number="1"
-          key={data.question}
-          className="quiz-container"
-        >
-          <h1 className="quiz-question">{data.question}</h1>
-          <ul className="quiz-answers">
-            {data.incorrect_answers.map((answer) => (
-              <li className="quiz-answer" key={answer}>
-                <button
-                  onClick={answersBtnHandler}
-                  data-answer-content={answer}
-                  className="quiz-answer-btn"
-                >
-                  {answer}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      {questions &&
+        questions.map((data) => (
+          <div
+            data-question-number="1"
+            key={data.question}
+            className="quiz-container"
+          >
+            <h1 className="quiz-question">{data.question}</h1>
+            <ul className="quiz-answers">
+              {data.incorrect_answers.map((answer) => (
+                <li className="quiz-answer" key={answer}>
+                  <button
+                    onClick={answersBtnHandler}
+                    data-answer-content={answer}
+                    className="quiz-answer-btn"
+                  >
+                    {answer}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       <button className="btn btn-check-answers">Check answers</button>
     </div>
   );
