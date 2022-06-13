@@ -49,6 +49,29 @@ const Quiz = () => {
 
   return (
     <div className="quizzes-container">
+      {questions.map((data) => (
+        <div
+          data-question-number="1"
+          key={data.question}
+          className="quiz-container"
+        >
+          <h1 className="quiz-question">{data.question}</h1>
+          <ul className="quiz-answers">
+            {data.incorrect_answers.map((answer) => (
+              <li className="quiz-answer" key={answer}>
+                <button
+                  onClick={answersBtnHandler}
+                  data-answer-type="correct"
+                  data-answer-content={answer}
+                  className="active quiz-answer-btn"
+                >
+                  {answer}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
       <div data-question-number="1" className="quiz-container">
         <h1 className="quiz-question">
           How many cores does the Intel i7-6950X have?
@@ -62,36 +85,6 @@ const Quiz = () => {
               className="active quiz-answer-btn"
             >
               10
-            </button>
-          </li>
-          <li className="quiz-answer">
-            <button
-              onClick={answersBtnHandler}
-              data-answer-type="incorrect"
-              data-answer-content="12"
-              className="quiz-answer-btn"
-            >
-              12
-            </button>
-          </li>
-          <li className="quiz-answer">
-            <button
-              onClick={answersBtnHandler}
-              data-answer-type="incorrect"
-              data-answer-content="18"
-              className="quiz-answer-btn"
-            >
-              18
-            </button>
-          </li>
-          <li className="quiz-answer">
-            <button
-              onClick={answersBtnHandler}
-              data-answer-type="incorrect"
-              data-answer-content="4"
-              className="quiz-answer-btn"
-            >
-              4
             </button>
           </li>
         </ul>
