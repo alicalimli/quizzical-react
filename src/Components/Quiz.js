@@ -2,7 +2,20 @@ import { useState } from "react";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
-  const answersBtnHandler = function (e) {};
+  const answersBtnHandler = function (e) {
+    const btnParent = e.target.closest(".quiz-container");
+    const btn = e.target.closest(".quiz-answer-btn");
+    const chosenAnswer = btn.textContent;
+    const questionNum = btnParent.dataset.questionNumber;
+
+    const answerObj = {
+      [`${questionNum}`]: `${chosenAnswer}`,
+    };
+
+    setAnswers(Object.assign(answers, answerObj));
+
+    console.log(answers);
+  };
 
   return (
     <div className="quizzes-container">
