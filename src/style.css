@@ -69,6 +69,7 @@ p {
 .quiz-page {
   width: 60vw;
   gap: 2rem;
+  padding: 1rem;
   margin: 2rem 0;
 }
 
@@ -124,6 +125,13 @@ p {
 .btn-check-answers {
   width: 25rem;
   margin: 2rem auto;
+}
+
+/* Back Button */
+
+.back-btn {
+  margin: 3rem 0;
+  width: fit-content;
 }
 
 @media screen and (max-width: 900px) {

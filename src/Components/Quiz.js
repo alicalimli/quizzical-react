@@ -61,15 +61,15 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
-      <Link className="back-btn" to="/">
-        Back
-      </Link>
       {isPending && <h1>Loading</h1>}
       {errorMsg && <h1>{errorMsg}</h1>}
       {!questions.length ? (
         ""
       ) : (
         <div className="quizzes-container">
+          <Link className="back-btn" to="/">
+            Back
+          </Link>
           {questions.map((data, index) => (
             <div
               data-question-number={index + 1}
