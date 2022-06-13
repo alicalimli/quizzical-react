@@ -35,28 +35,36 @@ const Quiz = () => {
   const fetchData = async () => {
     try {
       setIsPending(true);
+      setErrorMsg(null);
 
       const questionsData = await fetch(
         "https://opentdb.com/api.php?amount=5&category=18&type=multiple"
       );
 
-      if (!questionsData.ok) return;
+      if (!questionsData.ok) throw new Error("Oops, something wen't wrong");
 
       const questionDataResults = await questionsData.json();
+
+      console.log(questionDataResults);
+      if (!questionDataResults.results.length)
+        throw new Error("Oops, something wen't wrong");
 
       setQuestions(questionDataResults.results);
 
       return setIsPending(false);
     } catch (error) {
-      console.error(error);
+      setIsPending(false);
+      setErrorMsg(error.message);
     }
   };
 
   return (
     <div className="quiz-page">
-      {console.log(isPending)}
       {isPending && <h1>Loading</h1>}
-      {questions && (
+      {errorMsg && <h1>{errorMsg}</h1>}
+      {!questions.length ? (
+        ""
+      ) : (
         <div className="quizzes-container">
           {questions.map((data) => (
             <div
