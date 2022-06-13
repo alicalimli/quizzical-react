@@ -97,7 +97,8 @@ p {
   gap: 1rem;
 }
 
-.quiz-answer-btn {
+.quiz-answer-btn,
+.back-btn {
   border-radius: 15px;
   cursor: pointer;
   padding: 0.3rem 1rem;
@@ -106,16 +107,17 @@ p {
   transition: all 0.3s ease;
 }
 
+.quiz-answer-btn.active {
+  border: 1px solid transparent;
+  background-color: #d6dbf5;
+}
+
 .quiz-answer-btn:active {
   transform: scale(0.95);
 }
 
-.quiz-answer-btn:hover {
-  background-color: #d6dbf5;
-}
-
-.quiz-answer-btn.active {
-  border: 1px solid transparent;
+.quiz-answer-btn:hover,
+.back-btn:hover {
   background-color: #d6dbf5;
 }
 
