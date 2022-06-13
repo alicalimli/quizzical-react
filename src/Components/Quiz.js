@@ -61,7 +61,6 @@ const Quiz = () => {
               <li className="quiz-answer" key={answer}>
                 <button
                   onClick={answersBtnHandler}
-                  data-answer-type="correct"
                   data-answer-content={answer}
                   className="quiz-answer-btn"
                 >
