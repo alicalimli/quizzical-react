@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
+  const [checkedAnswers, setCheckedAnswers] = useState({});
 
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -83,17 +84,19 @@ const Quiz = () => {
   };
 
   const checkAnswers = function () {
-    console.log(answers);
-    console.log(questions);
+    const checkedAnswers = {};
+
     questions.map((questionsData, i) => {
       const questionData = questionsData[`questionNumber-${i + 1}`];
       console.log(answers[i + 1], questionData.correctAnswer);
       if (answers[i + 1] === questionData.correctAnswer) {
-        console.log("correct");
+        Object.assign(checkedAnswers, { [`${i}`]: true });
       } else {
-        console.log("incorrect");
+        Object.assign(checkedAnswers, { [`${i}`]: false });
       }
     });
+    setCheckedAnswers(checkedAnswers);
+    console.log(setAnswers);
   };
 
   return (
