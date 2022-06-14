@@ -82,6 +82,20 @@ const Quiz = () => {
     return newQuestionObj;
   };
 
+  const checkAnswers = function () {
+    console.log(answers);
+    console.log(questions);
+    questions.map((questionsData, i) => {
+      const questionData = questionsData[`questionNumber-${i + 1}`];
+      console.log(answers[i + 1], questionData.correctAnswer);
+      if (answers[i + 1] === questionData.correctAnswer) {
+        console.log("correct");
+      } else {
+        console.log("incorrect");
+      }
+    });
+  };
+
   return (
     <div className="quiz-page">
       {isPending && <h1>Loading</h1>}
