@@ -162,24 +162,21 @@ p {
 }
 
 @media screen and (max-width: 900px) {
-  .start-container {
-    width: 80%;
-  }
   .quiz-page {
     width: 100%;
-    text-align: center;
   }
-
-  .quiz-answers {
-    justify-content: center;
-  }
-
-  .btn-check-answers {
-    width: 90%;
+  .start-container {
+    width: 80%;
   }
 }
 
 @media screen and (max-width: 400px) {
+  .quiz-page {
+    text-align: center;
+  }
+  .quiz-answers {
+    justify-content: center;
+  }
   .start-btn {
     width: 90%;
   }
