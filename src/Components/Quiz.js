@@ -28,15 +28,24 @@ const Quiz = () => {
     answerBtn.classList.add("active");
 
     setAnswers(Object.assign(answers, answerObj));
+  };
 
-    console.log(answers);
+  const playAgainHandler = () => {
+    if (!document.querySelector(".quizzes-container")) return;
+    const quizAnswerBtns = document.querySelectorAll(".quiz-answer-btn");
+    const quizzesContainer = document.querySelector(".quizzes-container");
+
+    quizzesContainer.classList.remove("checked");
+
+    quizAnswerBtns.forEach((btn) => {
+      btn.classList.remove("incorrect", "correct", "active");
+    });
   };
 
   const checkAnswers = function () {
     const quizzesContainer = document.querySelector(".quizzes-container");
     const chosenAnswers = document.querySelectorAll(".quiz-answer-btn.active");
 
-    console.log(Object.keys(chosenAnswers).length, questions.length);
     if (Object.keys(chosenAnswers).length < questions.length) return;
 
     let score = 0;
@@ -78,7 +87,6 @@ const Quiz = () => {
               answersBtnHandler={answersBtnHandler}
             />
           )}
-
           <button className="btn btn-check-answers" onClick={checkAnswers}>
             Check answers
           </button>

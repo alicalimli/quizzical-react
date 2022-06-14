@@ -43,6 +43,7 @@ const createNewQuestionObj = function (questionObj) {
     const answersArr = questionData.incorrect_answers.concat(
       questionData.correct_answer
     );
+
     return {
       [`questionNumber-${i + 1}`]: {
         questionText: questionData.question,
