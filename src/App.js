@@ -10,7 +10,7 @@ const App = () => {
     <StrictMode>
       <BrowserRouter>
         <Routes>
-          <Route path="/quiz/:difficulty" element={<Quiz />} />
+          <Route path="/quiz/:difficulty/:category" element={<Quiz />} />
           <Route path="/" element={<Start />} />
         </Routes>
       </BrowserRouter>

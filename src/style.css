@@ -37,7 +37,6 @@ p {
   color: white;
   font-size: 1.2rem;
   border-radius: 15px;
-  width: 15rem;
   background-color: #4d5b9e;
   transition: background-color 0.3s ease;
 }
@@ -153,7 +152,7 @@ p {
   gap: 1rem;
 }
 
-#select-difficulty {
+.quiz-form select {
   font-size: 1.2rem;
   border-radius: 5px;
 }

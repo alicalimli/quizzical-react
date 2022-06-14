@@ -6,7 +6,7 @@ const Quiz = () => {
   const [answers, setAnswers] = useState({});
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const { difficulty } = useParams();
+  const { difficulty, category } = useParams();
 
   const answersBtnHandler = function (e) {
     const btnParent = e.target.closest(".quiz-container");
@@ -31,7 +31,7 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    console.log(difficulty);
+    console.log(difficulty, category);
     fetchData();
   }, []);
 
@@ -41,7 +41,7 @@ const Quiz = () => {
       setErrorMsg(null);
 
       const questionsData = await fetch(
-        `https://opentdb.com/api.php?amount=5&category=18&type=multiple&difficulty=${difficulty}`
+        `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`
       );
 
       if (!questionsData.ok) throw new Error("Oops, something wen't wrong");
