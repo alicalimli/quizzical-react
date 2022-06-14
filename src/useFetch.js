@@ -1,17 +1,5 @@
 import { useEffect, useState } from "react";
 
-const dataFetch = async function (url) {
-  const data = await fetch(url);
-
-  const dataFetchResults = await data.json();
-
-  if (!data.ok || !dataFetchResults.results.length) {
-    throw new Error("Oops, Something wen't wrong");
-  }
-
-  return dataFetchResults;
-};
-
 const useFetch = (difficultyLevel, categoryNumber) => {
   const url = `https://opentdb.com/api.php?amount=5&category=${categoryNumber}&type=multiple&difficulty=${difficultyLevel}`;
 
@@ -36,6 +24,18 @@ const useFetch = (difficultyLevel, categoryNumber) => {
   }, [categoryNumber, difficultyLevel]);
 
   return { isPending, errorMsg, questions };
+};
+
+const dataFetch = async function (url) {
+  const data = await fetch(url);
+
+  const dataFetchResults = await data.json();
+
+  if (!data.ok || !dataFetchResults.results.length) {
+    throw new Error("Oops, Something wen't wrong");
+  }
+
+  return dataFetchResults;
 };
 
 const createNewQuestionObj = function (questionObj) {
