@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../useFetch";
 
@@ -62,10 +62,10 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
-      {console.log(isPending, questions)}
-      {isPending && console.log("iunmdefsedf")}
+      {console.log(isPending, questions, errorMsg)}
       {errorMsg && <h1>{errorMsg}</h1>}
-      {questions && (
+      {isPending && <h1>loading...</h1>}
+      {questions.length ? (
         <div className="quizzes-container">
           <Link className="back-btn" to="/">
             Back
@@ -101,7 +101,7 @@ const Quiz = () => {
             Check answers
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

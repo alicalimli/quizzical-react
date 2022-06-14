@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
 const dataFetch = async function (url) {
-  const data = await fetch(url + "asdsd");
+  const data = await fetch(url);
 
-  const dataFetchResults = await response.json();
+  const dataFetchResults = await data.json();
 
-  if (!response.ok ?? !dataFetchResults.results) {
-    throw new Error("Can't fetch resources.");
+  if (!data.ok || !dataFetchResults.results.length) {
+    throw new Error("Oops, Something wen't wrong");
   }
 
   return dataFetchResults;
@@ -15,7 +15,7 @@ const dataFetch = async function (url) {
 const useFetch = (difficultyLevel, categoryNumber) => {
   const url = `https://opentdb.com/api.php?amount=5&category=${categoryNumber}&type=multiple&difficulty=${difficultyLevel}`;
 
-  const [isPending, setIsPending] = useState(false);
+  const [isPending, setIsPending] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const [questions, setQuestions] = useState([]);
 
