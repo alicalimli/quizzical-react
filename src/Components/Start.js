@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const Start = () => {
   const navigate = useNavigate();
   const [difficulty, setDifficulty] = useState("easy");
-  const [pending, setIsPending] = useState(false);
+  const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState();
@@ -20,20 +20,26 @@ const Start = () => {
 
   const fetcCategoryData = async () => {
     try {
+      setIsPending(true);
+      setErrorMsg("");
       const categories = await fetch("https://opentdb.com/api_category.php");
       const categoriesResults = await categories.json();
       setCategories(categoriesResults.trivia_categories);
+      setIsPending(false);
       return;
     } catch (error) {
+      setErrorMsg(error.message);
+      setIsPending(false);
       console.error(error);
     }
   };
 
   return (
-    <div className="start-container">
-      {console.log(categories.length)}
+    <div className="start-page">
+      {isPending && <h1>loading..</h1>}
+      {errorMsg && <h1>{errorMsg}</h1>}
       {categories.length !== 0 ? (
-        <div>
+        <div className="start-container">
           {" "}
           <h1>Quizzical</h1>
           <p>Answer fun trivia questions! </p>

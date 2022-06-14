@@ -45,6 +45,10 @@ p {
   background-color: #6470ac;
 }
 
+.start-page {
+  text-align: center;
+}
+
 .start-container {
   position: absolute;
   top: 50%;
