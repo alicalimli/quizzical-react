@@ -32,11 +32,14 @@ const Quiz = () => {
 
   const playAgainHandler = () => {
     if (!document.querySelector(".quizzes-container")) return;
+
+    { isPending, errorMsg, questions } = useFetch(difficulty, category);
+    
     const quizAnswerBtns = document.querySelectorAll(".quiz-answer-btn");
     const quizzesContainer = document.querySelector(".quizzes-container");
 
-    setQuizScore(null);
-    setAnswers(null);
+    setQuizScore();
+    setAnswers({});
 
     quizzesContainer.classList.remove("checked");
 
@@ -46,34 +49,44 @@ const Quiz = () => {
   };
 
   const checkAnswers = function () {
-    const quizzesContainer = document.querySelector(".quizzes-container");
-    const chosenAnswers = document.querySelectorAll(".quiz-answer-btn.active");
-
-    if (Object.keys(chosenAnswers).length < questions.length) return;
-
-    let score = 0;
-
-    quizzesContainer.classList.add("checked");
-
-    questions.map((questionsData, i) => {
-      const questionData = questionsData[`questionNumber-${i + 1}`];
-
-      if (answers[i + 1] === questionData.correctAnswer) {
-        score++;
-        chosenAnswers[i].classList.add("correct");
-      } else {
-        chosenAnswers[i].classList.add("incorrect");
-      }
-
-      // Highlight all the correct answers
-      const correctAnswerBtn = document.querySelector(
-        `[data-answer-content="${questionData.correctAnswer}"]`
+    const checkAnswerBtn = document.querySelector(".btn-check-answers");
+    if (!quizScore) {
+      const quizzesContainer = document.querySelector(".quizzes-container");
+      const chosenAnswers = document.querySelectorAll(
+        ".quiz-answer-btn.active"
       );
 
-      correctAnswerBtn.classList.add("correct");
-    });
+      if (Object.keys(chosenAnswers).length < questions.length) return;
 
-    setQuizScore(score);
+      let score = 0;
+
+      quizzesContainer.classList.add("checked");
+
+      questions.map((questionsData, i) => {
+        const questionData = questionsData[`questionNumber-${i + 1}`];
+
+        if (answers[i + 1] === questionData.correctAnswer) {
+          score++;
+          chosenAnswers[i].classList.add("correct");
+        } else {
+          chosenAnswers[i].classList.add("incorrect");
+        }
+
+        // Highlight all the correct answers
+        const correctAnswerBtn = document.querySelector(
+          `[data-answer-content="${questionData.correctAnswer}"]`
+        );
+
+        correctAnswerBtn.classList.add("correct");
+
+        checkAnswerBtn.textContent = "Play Again!";
+      });
+
+      setQuizScore(score);
+    } else {
+      playAgainHandler();
+      checkAnswerBtn.textContent = "Check Answers";
+    }
   };
 
   return (
