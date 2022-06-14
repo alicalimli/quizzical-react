@@ -141,7 +141,7 @@ p {
   display: flex;
   width: 100%;
   flex-direction: column;
-  margin-top: 1rem;
+  margin-top: 3rem;
   text-align: left;
   gap: 1rem;
 }
