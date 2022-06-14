@@ -40,9 +40,9 @@ const dataFetch = async function (url) {
 
 const createNewQuestionObj = function (questionObj) {
   const newQuestionObj = questionObj.map((questionData, i) => {
-    const answersArr = questionData.incorrect_answers.concat(
-      questionData.correct_answer
-    );
+    const answersArr = questionData.incorrect_answers
+      .concat(questionData.correct_answer)
+      .sort((a, b) => 0.5 - Math.random());
 
     return {
       [`questionNumber-${i + 1}`]: {
