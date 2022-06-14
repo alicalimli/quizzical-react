@@ -5,7 +5,7 @@ import Questions from "./Questions";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
-  const [quizScore, setQuizScore] = useState(0);
+  const [quizScore, setQuizScore] = useState(null);
 
   const { difficulty, category } = useParams();
   const { isPending, errorMsg, questions } = useFetch(difficulty, category);
@@ -34,6 +34,9 @@ const Quiz = () => {
     if (!document.querySelector(".quizzes-container")) return;
     const quizAnswerBtns = document.querySelectorAll(".quiz-answer-btn");
     const quizzesContainer = document.querySelector(".quizzes-container");
+
+    setQuizScore(null);
+    setAnswers(null);
 
     quizzesContainer.classList.remove("checked");
 
@@ -66,10 +69,11 @@ const Quiz = () => {
       const correctAnswerBtn = document.querySelector(
         `[data-answer-content="${questionData.correctAnswer}"]`
       );
+
       correctAnswerBtn.classList.add("correct");
     });
+
     setQuizScore(score);
-    console.log(quizScore, score);
   };
 
   return (
@@ -86,6 +90,9 @@ const Quiz = () => {
               questions={questions}
               answersBtnHandler={answersBtnHandler}
             />
+          )}
+          {quizScore && (
+            <h1>{`You scored ${quizScore} out of ${questions.length} questions`}</h1>
           )}
           <button className="btn btn-check-answers" onClick={checkAnswers}>
             Check answers
