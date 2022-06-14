@@ -32,16 +32,16 @@ const Quiz = () => {
 
   useEffect(() => {
     console.log(difficulty, category);
-    fetchData();
+    fetchData(category, difficulty);
   }, []);
 
-  const fetchData = async () => {
+  const fetchData = async (categoryNumber, difficultyLevel) => {
     try {
       setIsPending(true);
       setErrorMsg(null);
 
       const questionsData = await fetch(
-        `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`
+        `https://opentdb.com/api.php?amount=5&category=${categoryNumber}&type=multiple&difficulty=${difficultyLevel}`
       );
 
       if (!questionsData.ok) throw new Error("Oops, something wen't wrong");
