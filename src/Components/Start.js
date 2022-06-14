@@ -20,8 +20,10 @@ const Start = () => {
     try {
       const categories = await fetch("https://opentdb.com/api_category.php");
       const categoriesResults = await categories.json();
+      const categorySelection = document.querySelector("#select-category");
+      setCategories(categoriesResults.trivia_categories);
 
-      return setCategories(categoriesResults.trivia_categories);
+      return setCategory(categorySelection.firstChild.value);
     } catch (error) {
       console.error(error);
     }
@@ -36,13 +38,10 @@ const Start = () => {
           Category
           <select
             required
-            placeholder="e.g Computers"
             id="select-category"
             onChange={(e) => setCategory(e.target.value)}
+            onBlur={(e) => setCategory(e.target.value)}
           >
-            <option disabled selected value="">
-              e.g Computers
-            </option>
             {categories.length !== 0
               ? categories.map((category) => (
                   <option key={category.id} value={category.id}>
@@ -57,6 +56,7 @@ const Start = () => {
           <select
             id="select-difficulty"
             onChange={(e) => setDifficulty(e.target.value)}
+            onBlur={(e) => setDifficulty(e.target.value)}
           >
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
