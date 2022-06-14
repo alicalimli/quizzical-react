@@ -1,11 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Start = () => {
   const navigate = useNavigate();
+  const [difficulty, setDifficulty] = useState("easy");
 
   const formActionHandler = (e) => {
     e.preventDefault();
-    navigate("/quiz");
+    navigate(`/quiz/${difficulty}`);
   };
 
   return (
@@ -14,7 +16,10 @@ const Start = () => {
       <p>Answer fun trivia questions! </p>
       <form className="quiz-form" onSubmit={formActionHandler}>
         <label htmlFor="select-difficulty">Difficulty</label>
-        <select id="select-difficulty">
+        <select
+          id="select-difficulty"
+          onChange={(e) => setDifficulty(e.target.value)}
+        >
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
+  const { difficulty } = useParams();
 
   const answersBtnHandler = function (e) {
     const btnParent = e.target.closest(".quiz-container");
@@ -30,6 +31,7 @@ const Quiz = () => {
   };
 
   useEffect(() => {
+    console.log(difficulty);
     fetchData();
   }, []);
 
@@ -39,7 +41,7 @@ const Quiz = () => {
       setErrorMsg(null);
 
       const questionsData = await fetch(
-        "https://opentdb.com/api.php?amount=5&category=18&type=multiple"
+        `https://opentdb.com/api.php?amount=5&category=18&type=multiple&difficulty=${difficulty}`
       );
 
       if (!questionsData.ok) throw new Error("Oops, something wen't wrong");
