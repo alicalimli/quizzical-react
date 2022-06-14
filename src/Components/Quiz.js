@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../useFetch";
+import Questions from "./Questions";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
-  const { difficulty, category } = useParams();
+  const [quizScore, setQuizScore] = useState(0);
 
+  const { difficulty, category } = useParams();
   const { isPending, errorMsg, questions } = useFetch(difficulty, category);
 
   const answersBtnHandler = function (e) {
@@ -57,12 +59,12 @@ const Quiz = () => {
       );
       correctAnswerBtn.classList.add("correct");
     });
-    console.log(score);
+    setQuizScore(score);
+    console.log(quizScore, score);
   };
 
   return (
     <div className="quiz-page">
-      {console.log(isPending, questions, errorMsg)}
       {errorMsg && <h1>{errorMsg}</h1>}
       {isPending && <h1>loading...</h1>}
       {questions.length ? (
@@ -70,32 +72,12 @@ const Quiz = () => {
           <Link className="back-btn" to="/">
             Back
           </Link>
-          {questions.length &&
-            questions.map((data, index) => {
-              const questionData = data[`questionNumber-${index + 1}`];
-              return (
-                <div
-                  data-question-number={index + 1}
-                  key={questionData.questionText}
-                  className="quiz-container"
-                >
-                  <h1 className="quiz-question">{questionData.questionText}</h1>
-                  <ul className="quiz-answers">
-                    {questionData.answers.map((answer) => (
-                      <li className="quiz-answer" key={answer}>
-                        <button
-                          onClick={answersBtnHandler}
-                          data-answer-content={answer}
-                          className={`quiz-answer-btn`}
-                        >
-                          {answer}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+          {questions.length && (
+            <Questions
+              questions={questions}
+              answersBtnHandler={answersBtnHandler}
+            />
+          )}
 
           <button className="btn btn-check-answers" onClick={checkAnswers}>
             Check answers
