@@ -3,39 +3,12 @@ import { Link, useParams } from "react-router-dom";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
-  const [answerOptions, setAnswerOptions] = useState([]);
   const [answers, setAnswers] = useState({});
 
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
 
   const { difficulty, category } = useParams();
-
-  const answersBtnHandler = function (e) {
-    const btnParent = e.target.closest(".quiz-container");
-    const answerBtn = e.target.closest(".quiz-answer-btn");
-    const answerBtns = btnParent.querySelectorAll(".quiz-answer-btn");
-    const chosenAnswer = answerBtn.dataset.answerContent;
-    const questionNum = btnParent.dataset.questionNumber;
-
-    if (!btnParent) return;
-
-    const answerObj = {
-      [`${questionNum}`]: `${chosenAnswer}`,
-    };
-
-    answerBtns.forEach((btn) => btn.classList.remove("active"));
-
-    answerBtn.classList.add("active");
-
-    setAnswers(Object.assign(answers, answerObj));
-
-    console.log(answers);
-  };
-
-  useEffect(() => {
-    fetchQuestionsData(category, difficulty);
-  }, []);
 
   const fetchQuestionsData = async (categoryNumber, difficultyLevel) => {
     try {
@@ -66,6 +39,32 @@ const Quiz = () => {
     }
   };
 
+  const answersBtnHandler = function (e) {
+    const btnParent = e.target.closest(".quiz-container");
+    const answerBtn = e.target.closest(".quiz-answer-btn");
+    const answerBtns = btnParent.querySelectorAll(".quiz-answer-btn");
+    const chosenAnswer = answerBtn.dataset.answerContent;
+    const questionNum = btnParent.dataset.questionNumber;
+
+    if (!btnParent) return;
+
+    const answerObj = {
+      [`${questionNum}`]: `${chosenAnswer}`,
+    };
+
+    answerBtns.forEach((btn) => btn.classList.remove("active"));
+
+    answerBtn.classList.add("active");
+
+    setAnswers(Object.assign(answers, answerObj));
+
+    console.log(answers);
+  };
+
+  useEffect(() => {
+    fetchQuestionsData(category, difficulty);
+  }, []);
+
   const createNewQuestionObj = function (questionObj) {
     const newQuestionObj = questionObj.map((questionData, i) => {
       const answersArr = questionData.incorrect_answers.concat(
@@ -92,11 +91,9 @@ const Quiz = () => {
           <Link className="back-btn" to="/">
             Back
           </Link>
-          {console.log(questions)}
           {questions.length &&
             questions.map((data, index) => {
               const questionData = data[`questionNumber-${index + 1}`];
-              console.log(questionData.questionText);
               return (
                 <div
                   data-question-number={index + 1}
@@ -121,7 +118,9 @@ const Quiz = () => {
               );
             })}
 
-          <button className="btn btn-check-answers">Check answers</button>
+          <button className="btn btn-check-answers" onClick={checkAnswers}>
+            Check answers
+          </button>
         </div>
       )}
     </div>
