@@ -1,13 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Start = () => {
   const navigate = useNavigate();
   const [difficulty, setDifficulty] = useState("easy");
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState();
 
   const formActionHandler = (e) => {
     e.preventDefault();
-    navigate(`/quiz/${difficulty}`);
+    navigate(`/quiz/${difficulty}/${category}`);
+  };
+
+  useEffect(() => {
+    fetcCategoryData();
+  }, []);
+
+  const fetcCategoryData = async () => {
+    try {
+      const categories = await fetch("https://opentdb.com/api_category.php");
+      const categoriesResults = await categories.json();
+
+      return setCategories(categoriesResults.trivia_categories);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -15,15 +32,36 @@ const Start = () => {
       <h1>Quizzical</h1>
       <p>Answer fun trivia questions! </p>
       <form className="quiz-form" onSubmit={formActionHandler}>
-        <label htmlFor="select-difficulty">Difficulty</label>
-        <select
-          id="select-difficulty"
-          onChange={(e) => setDifficulty(e.target.value)}
-        >
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
+        <label htmlFor="select-category">
+          Category
+          <select
+            required
+            placeholder="e.g Computers"
+            id="select-category"
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="">e.g Computers</option>
+            {categories.length !== 0
+              ? categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))
+              : ""}
+          </select>
+        </label>
+        <label htmlFor="select-difficulty">
+          Difficulty
+          <select
+            id="select-difficulty"
+            onChange={(e) => setDifficulty(e.target.value)}
+          >
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+
         <button className="btn start-btn">Start quiz</button>
       </form>
     </div>
