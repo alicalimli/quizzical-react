@@ -14,14 +14,16 @@ const Start = () => {
     try {
       setIsPending(true);
       setErrorMsg("");
+
       const categories = await fetch("https://opentdb.com/api_category.php");
       const categoriesResults = await categories.json();
+
       setCategories(categoriesResults.trivia_categories);
       setIsPending(false);
-      return;
     } catch (error) {
       setErrorMsg(error.message);
       setIsPending(false);
+
       console.error(error);
     }
   };
