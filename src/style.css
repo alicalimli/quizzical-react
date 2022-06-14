@@ -139,6 +139,7 @@ p {
 
 .quiz-form {
   display: flex;
+  width: 100%;
   flex-direction: column;
   margin-top: 1rem;
   text-align: left;
@@ -162,7 +163,7 @@ p {
 
 @media screen and (max-width: 900px) {
   .start-container {
-    width: 100%;
+    width: 80%;
   }
   .quiz-page {
     width: 100%;
