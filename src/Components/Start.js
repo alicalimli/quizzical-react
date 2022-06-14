@@ -40,7 +40,9 @@ const Start = () => {
             id="select-category"
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="">e.g Computers</option>
+            <option disabled selected value="">
+              e.g Computers
+            </option>
             {categories.length !== 0
               ? categories.map((category) => (
                   <option key={category.id} value={category.id}>
