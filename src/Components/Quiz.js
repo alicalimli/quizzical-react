@@ -85,18 +85,30 @@ const Quiz = () => {
 
   const checkAnswers = function () {
     const checkedAnswers = {};
+    const quizzesContainer = document.querySelector(".quizzes-container");
+    const chosenAnswers = document.querySelectorAll(".quiz-answer-btn.active");
+
+    quizzesContainer.classList.add("checked");
 
     questions.map((questionsData, i) => {
       const questionData = questionsData[`questionNumber-${i + 1}`];
-      console.log(answers[i + 1], questionData.correctAnswer);
+
       if (answers[i + 1] === questionData.correctAnswer) {
         Object.assign(checkedAnswers, { [`${i}`]: true });
+        chosenAnswers[i].classList.add("correct");
       } else {
         Object.assign(checkedAnswers, { [`${i}`]: false });
+        chosenAnswers[i].classList.add("incorrect");
       }
+
+      // Highlight all the correct answers
+      const correctAnswerBtn = document.querySelector(
+        `[data-answer-content="${questionData.correctAnswer}"]`
+      );
+      correctAnswerBtn.classList.add("correct");
     });
     setCheckedAnswers(checkedAnswers);
-    console.log(setAnswers);
+    console.log(checkedAnswers);
   };
 
   return (
@@ -124,7 +136,7 @@ const Quiz = () => {
                         <button
                           onClick={answersBtnHandler}
                           data-answer-content={answer}
-                          className="quiz-answer-btn"
+                          className={`quiz-answer-btn`}
                         >
                           {answer}
                         </button>
@@ -145,29 +157,3 @@ const Quiz = () => {
 };
 
 export default Quiz;
-
-{
-  /* {questions.forEach((data, index) => (
-            <div
-              data-question-number={index + 1}
-              key={data.question}
-              className="quiz-container"
-            >
-              <h1 className="quiz-question">{data.questionText}</h1>
-              <ul className="quiz-answers">
-                {console.log(data)}
-                {data.answers.map((answer) => (
-                  <li className="quiz-answer" key={answer}>
-                    <button
-                      onClick={answersBtnHandler}
-                      data-answer-content={answer}
-                      className="quiz-answer-btn"
-                    >
-                      {answer}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))} */
-}
