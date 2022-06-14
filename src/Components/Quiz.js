@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
-  const [checkedAnswers, setCheckedAnswers] = useState({});
 
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -84,9 +83,10 @@ const Quiz = () => {
   };
 
   const checkAnswers = function () {
-    const checkedAnswers = {};
     const quizzesContainer = document.querySelector(".quizzes-container");
     const chosenAnswers = document.querySelectorAll(".quiz-answer-btn.active");
+
+    let score = 0;
 
     quizzesContainer.classList.add("checked");
 
@@ -94,10 +94,9 @@ const Quiz = () => {
       const questionData = questionsData[`questionNumber-${i + 1}`];
 
       if (answers[i + 1] === questionData.correctAnswer) {
-        Object.assign(checkedAnswers, { [`${i}`]: true });
+        score++;
         chosenAnswers[i].classList.add("correct");
       } else {
-        Object.assign(checkedAnswers, { [`${i}`]: false });
         chosenAnswers[i].classList.add("incorrect");
       }
 
@@ -107,8 +106,7 @@ const Quiz = () => {
       );
       correctAnswerBtn.classList.add("correct");
     });
-    setCheckedAnswers(checkedAnswers);
-    console.log(checkedAnswers);
+    console.log(score);
   };
 
   return (
