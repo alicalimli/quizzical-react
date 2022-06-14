@@ -14,8 +14,12 @@ const Start = () => {
       <h1>Quizzical</h1>
       <p>Answer fun trivia questions! </p>
       <form onSubmit={formActionHandler} onBlur={formActionHandler}>
-        <select>
-          <option value="yeye">yeye</option>
+        <label htmlFor="difficulty">Difficulty</label>
+        <select id="difficulty">
+          <option />
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
         </select>
         <button className="btn start-btn">Start quiz</button>
       </form>
