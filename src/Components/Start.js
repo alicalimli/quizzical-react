@@ -30,6 +30,7 @@ const Start = () => {
 
   return (
     <div className="start-page">
+      {console.log(categories)}
       {isPending && <h1>loading..</h1>}
       {errorMsg && <h1>{errorMsg}</h1>}
       {categories.length && <StartForm categories={categories} />}

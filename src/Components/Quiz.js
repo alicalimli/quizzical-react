@@ -34,7 +34,6 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    console.log(difficulty, category);
     fetchQuestionsData(category, difficulty);
   }, []);
 
@@ -88,16 +87,51 @@ const Quiz = () => {
     <div className="quiz-page">
       {isPending && <h1>Loading</h1>}
       {errorMsg && <h1>{errorMsg}</h1>}
-      {!questions.length ? (
-        ""
-      ) : (
+      {questions.length && (
         <div className="quizzes-container">
           <Link className="back-btn" to="/">
             Back
           </Link>
           {console.log(questions)}
+          {questions.length &&
+            questions.map((data, index) => {
+              const questionData = data[`questionNumber-${index + 1}`];
+              console.log(questionData.questionText);
+              return (
+                <div
+                  data-question-number={index + 1}
+                  key={questionData.questionText}
+                  className="quiz-container"
+                >
+                  <h1 className="quiz-question">{questionData.questionText}</h1>
+                  <ul className="quiz-answers">
+                    {questionData.answers.map((answer) => (
+                      <li className="quiz-answer" key={answer}>
+                        <button
+                          onClick={answersBtnHandler}
+                          data-answer-content={answer}
+                          className="quiz-answer-btn"
+                        >
+                          {answer}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
 
-          {/* {questions.forEach((data, index) => (
+          <button className="btn btn-check-answers">Check answers</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Quiz;
+
+{
+  /* {questions.forEach((data, index) => (
             <div
               data-question-number={index + 1}
               key={data.question}
@@ -119,12 +153,5 @@ const Quiz = () => {
                 ))}
               </ul>
             </div>
-          ))} */}
-          <button className="btn btn-check-answers">Check answers</button>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default Quiz;
+          ))} */
+}
