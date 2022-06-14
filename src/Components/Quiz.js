@@ -3,9 +3,12 @@ import { Link, useParams } from "react-router-dom";
 
 const Quiz = () => {
   const [questions, setQuestions] = useState([]);
+  const [answerOptions, setAnswerOptions] = useState([]);
   const [answers, setAnswers] = useState({});
+
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
+
   const { difficulty, category } = useParams();
 
   const answersBtnHandler = function (e) {
@@ -32,10 +35,10 @@ const Quiz = () => {
 
   useEffect(() => {
     console.log(difficulty, category);
-    fetchData(category, difficulty);
+    fetchQuestionsData(category, difficulty);
   }, []);
 
-  const fetchData = async (categoryNumber, difficultyLevel) => {
+  const fetchQuestionsData = async (categoryNumber, difficultyLevel) => {
     try {
       setIsPending(true);
       setErrorMsg(null);
@@ -44,21 +47,41 @@ const Quiz = () => {
         `https://opentdb.com/api.php?amount=5&category=${categoryNumber}&type=multiple&difficulty=${difficultyLevel}`
       );
 
-      if (!questionsData.ok) throw new Error("Oops, something wen't wrong");
-
       const questionDataResults = await questionsData.json();
 
-      console.log(questionDataResults);
-      if (!questionDataResults.results.length)
+      if (!questionDataResults.results.length) {
         throw new Error("Oops, something wen't wrong");
+      }
 
-      setQuestions(questionDataResults.results);
+      const newQuestionsObj = createNewQuestionObj(
+        await questionDataResults.results
+      );
+
+      setQuestions(newQuestionsObj);
 
       return setIsPending(false);
     } catch (error) {
       setIsPending(false);
+      console.error(error);
       setErrorMsg(error.message);
     }
+  };
+
+  const createNewQuestionObj = function (questionObj) {
+    const newQuestionObj = questionObj.map((questionData, i) => {
+      const answersArr = questionData.incorrect_answers.concat(
+        questionData.correct_answer
+      );
+      return {
+        [`questionNumber-${i + 1}`]: {
+          questionText: questionData.question,
+          correctAnswer: questionData.correct_answer,
+          answers: answersArr,
+        },
+      };
+    });
+
+    return newQuestionObj;
   };
 
   return (
@@ -72,15 +95,18 @@ const Quiz = () => {
           <Link className="back-btn" to="/">
             Back
           </Link>
-          {questions.map((data, index) => (
+          {console.log(questions)}
+
+          {/* {questions.forEach((data, index) => (
             <div
               data-question-number={index + 1}
               key={data.question}
               className="quiz-container"
             >
-              <h1 className="quiz-question">{data.question}</h1>
+              <h1 className="quiz-question">{data.questionText}</h1>
               <ul className="quiz-answers">
-                {data.incorrect_answers.map((answer) => (
+                {console.log(data)}
+                {data.answers.map((answer) => (
                   <li className="quiz-answer" key={answer}>
                     <button
                       onClick={answersBtnHandler}
@@ -93,7 +119,7 @@ const Quiz = () => {
                 ))}
               </ul>
             </div>
-          ))}
+          ))} */}
           <button className="btn btn-check-answers">Check answers</button>
         </div>
       )}
