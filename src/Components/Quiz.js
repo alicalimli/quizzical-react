@@ -20,22 +20,20 @@ const Quiz = () => {
   }, [url]);
 
   const dataFetch = function (url) {
-    setTimeout(() => {
-      const data = fetch(url)
-        .then((data) => data.json())
-        .then((data) => {
-          const newQuestionsObj = createQuestions(data.results);
+    const data = fetch(url)
+      .then((data) => data.json())
+      .then((data) => {
+        const newQuestionsObj = createQuestions(data.results);
 
-          setQuestions(newQuestionsObj);
+        setQuestions(newQuestionsObj);
 
-          setIsPending(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          setIsPending(false);
-          setErrorMsg(error.message);
-        });
-    }, 1000);
+        setIsPending(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsPending(false);
+        setErrorMsg(error.message);
+      });
   };
 
   const answersBtnHandler = function (e) {
