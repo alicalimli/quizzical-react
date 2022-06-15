@@ -149,7 +149,7 @@ p {
 
 .incorrect {
   background-color: #f8bcbc !important;
-  border: 1px solid transparent !important;
+  border: 1px solid black !important;
 }
 
 .btn-check-answers {
