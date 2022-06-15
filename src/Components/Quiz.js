@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../useFetch";
 import Questions from "./Questions";
+import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
@@ -100,7 +101,7 @@ const Quiz = () => {
   return (
     <div className="quiz-page">
       {errorMsg && <h1>{errorMsg}</h1>}
-      {isPending && <h1>loading...</h1>}
+      {isPending && <LoadingSpinner />}
       {questions.length ? (
         <div className="quizzes-container">
           <Link className="back-btn" to="/">
