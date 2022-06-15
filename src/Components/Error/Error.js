@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 import "./Error.css";
 
-const Error = ({ errorMsg, isReloading, error404 }) => {
+const Error = ({ isReloading, error404 }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
