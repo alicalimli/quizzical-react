@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import StartForm from "./StartForm";
-import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const Start = () => {
   const [isPending, setIsPending] = useState(false);
