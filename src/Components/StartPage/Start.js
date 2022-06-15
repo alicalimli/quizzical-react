@@ -24,9 +24,7 @@ const Start = () => {
         setIsPending(true);
         setErrorMsg("");
 
-        const categories = await fetch(
-          "https://opentdb.com/api_category.php231423"
-        );
+        const categories = await fetch("https://opentdb.com/api_category.php");
         const categoriesResults = await categories.json();
 
         localCache.categories = categoriesResults.trivia_categories || [];
