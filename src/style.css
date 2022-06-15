@@ -38,11 +38,18 @@ p {
   font-size: 1.2rem;
   border-radius: 15px;
   background-color: #4d5b9e;
-  transition: background-color 0.3s ease;
+  transform: translateY(0);
+  transition: all 0.25s ease-in-out;
 }
 
 .btn:hover {
   background-color: #6470ac;
+  transform: translateY(-10%);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+  transform: translateY(0%);
 }
 
 .start-page {
@@ -110,8 +117,15 @@ p {
   cursor: pointer;
   padding: 0.3rem 1rem;
   border: solid 1px #4d5b9e;
-  transform: scale(1);
+  transform: translateY(0%);
   transition: all 0.3s ease;
+}
+
+.quiz-answer-btn:hover,
+.back-btn:hover {
+  background-color: #d6dbf5;
+  transform: translateY(-10%);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.08);
 }
 
 .quizzes-container.checked .quiz-answer-btn {
@@ -124,12 +138,7 @@ p {
 }
 
 .quiz-answer-btn:active {
-  transform: scale(0.95);
-}
-
-.quiz-answer-btn:hover,
-.back-btn:hover {
-  background-color: #d6dbf5;
+  transform: translateY(0);
 }
 
 .correct {
