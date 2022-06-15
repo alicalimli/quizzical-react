@@ -25,10 +25,10 @@ const Error = ({ errorMsg, isReloading, error404 }) => {
         <img src={bugImg} alt="" className="error-img" />
       )}
 
-      <h1>{errorMsg}</h1>
+      <h1>Oops, Something went wrong</h1>
       <p>
-        <Link to="/">Click Here</Link> or wait and you will be automatically
-        redirected in the homepage in 5 seconds.
+        <Link to="/">Click Here</Link>to go back or wait and you will be
+        automatically redirected in the homepage in 5 seconds.
       </p>
     </div>
   );

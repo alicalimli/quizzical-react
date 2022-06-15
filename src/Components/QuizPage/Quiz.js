@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Questions from "../Questions/Questions";
 import createQuestions from "../../Hooks/createQuestions";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import Error from "../../components/Error/Error";
+import Error from "../Error/Error";
 
 import "./Quiz.css";
 
@@ -15,7 +15,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
 
   let { difficulty, category } = useParams();
-  const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
+  const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}ssdsd`;
 
   useEffect(() => {
     setIsPending(true);
@@ -27,6 +27,8 @@ const Quiz = () => {
       .then((data) => data.json())
       .then((data) => {
         const newQuestionsObj = createQuestions(data.results);
+
+        if (!data.results.length) throw new Error();
 
         setQuestions(newQuestionsObj);
 
@@ -131,7 +133,7 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
-      {errorMsg && <Error errorMsg={errorMsg} />}
+      {errorMsg && <Error />}
       {isPending && <LoadingSpinner />}
       {questions.length ? (
         <div className="quizzes-container">

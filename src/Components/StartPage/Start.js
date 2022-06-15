@@ -43,7 +43,7 @@ const Start = () => {
   return (
     <div className="start-page">
       {isPending && <LoadingSpinner />}
-      {errorMsg && <ErrorPage errorMsg={errorMsg} isReloading="true" />}
+      {errorMsg && <ErrorPage isReloading="true" />}
       {categories.length ? <StartForm categories={categories} /> : ""}
     </div>
   );

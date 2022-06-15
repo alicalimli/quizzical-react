@@ -13,12 +13,7 @@ const App = () => {
         <Routes>
           <Route path="/quiz/:difficulty/:category" element={<Quiz />} />
           <Route path="/" element={<Start />} />
-          <Route
-            path="*"
-            element={
-              <Error error404="true" errorMsg={"Oops, Something went wrong"} />
-            }
-          />
+          <Route path="*" element={<Error error404="true" />} />
         </Routes>
       </BrowserRouter>
     </StrictMode>
