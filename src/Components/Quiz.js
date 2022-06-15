@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import useFetch from "../Hooks/useFetch";
 import Questions from "./Questions";
 import createQuestions from "../Hooks/createQuestions";
 import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
@@ -8,7 +7,7 @@ import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
   const [quizScore, setQuizScore] = useState(null);
-  const [isPending, setIsPending] = useState(true);
+  const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [questions, setQuestions] = useState([]);
 
@@ -16,23 +15,27 @@ const Quiz = () => {
   const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
 
   useEffect(() => {
+    setIsPending(true);
     dataFetch(url);
   }, [url]);
 
   const dataFetch = function (url) {
-    useFetch(url)
-      .then((data) => {
-        const newQuestionsObj = createQuestions(data.results);
+    setTimeout(() => {
+      const data = fetch(url)
+        .then((data) => data.json())
+        .then((data) => {
+          const newQuestionsObj = createQuestions(data.results);
 
-        setQuestions(newQuestionsObj);
+          setQuestions(newQuestionsObj);
 
-        setIsPending(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsPending(false);
-        setErrorMsg(error.message);
-      });
+          setIsPending(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsPending(false);
+          setErrorMsg(error.message);
+        });
+    }, 1000);
   };
 
   const answersBtnHandler = function (e) {
@@ -63,14 +66,17 @@ const Quiz = () => {
     const quizAnswerBtns = document.querySelectorAll(".quiz-answer-btn");
     const quizzesContainer = document.querySelector(".quizzes-container");
 
-    setQuizScore(null);
-    setAnswers({});
-
     quizzesContainer.classList.remove("checked");
 
     quizAnswerBtns.forEach((btn) => {
       btn.classList.remove("incorrect", "correct", "active");
     });
+
+    setQuizScore(null);
+    setAnswers({});
+    setQuestions([]);
+    setIsPending(true);
+    dataFetch(url);
   };
 
   const checkAnswers = function () {
@@ -124,6 +130,7 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
+      {console.log(isPending, questions)}
       {errorMsg && <h1>{errorMsg}</h1>}
       {isPending && <LoadingSpinner />}
       {questions.length ? (
