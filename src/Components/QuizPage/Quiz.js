@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Questions from "../Questions/Questions";
 import createQuestions from "../../Hooks/createQuestions";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import Error from "../../components/Error/Error";
 
 import "./Quiz.css";
 
@@ -130,7 +131,7 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
-      {errorMsg && <h1>{errorMsg}</h1>}
+      {errorMsg && <Error errorMsg={errorMsg} />}
       {isPending && <LoadingSpinner />}
       {questions.length ? (
         <div className="quizzes-container">
