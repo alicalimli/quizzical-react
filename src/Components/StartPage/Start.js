@@ -4,6 +4,8 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 import "./Start.css";
 
+const localCache = {};
+
 const Start = () => {
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -15,14 +17,22 @@ const Start = () => {
 
   const fetcCategoryData = async () => {
     try {
-      setIsPending(true);
-      setErrorMsg("");
+      if (localCache.categories) {
+        console.log("yes");
+        setCategories(localCache.categories);
+      } else {
+        console.log("fetching");
+        setIsPending(true);
+        setErrorMsg("");
 
-      const categories = await fetch("https://opentdb.com/api_category.php");
-      const categoriesResults = await categories.json();
+        const categories = await fetch("https://opentdb.com/api_category.php");
+        const categoriesResults = await categories.json();
 
-      setCategories(categoriesResults.trivia_categories);
-      setIsPending(false);
+        localCache.categories = categoriesResults.trivia_categories || [];
+
+        setCategories(localCache.categories);
+        setIsPending(false);
+      }
     } catch (error) {
       setErrorMsg(error.message);
       setIsPending(false);
