@@ -18,10 +18,8 @@ const Start = () => {
   const fetcCategoryData = async () => {
     try {
       if (localCache.categories) {
-        console.log("yes");
         setCategories(localCache.categories);
       } else {
-        console.log("fetching");
         setIsPending(true);
         setErrorMsg("");
 
@@ -43,7 +41,6 @@ const Start = () => {
 
   return (
     <div className="start-page">
-      {console.log(categories)}
       {isPending && <LoadingSpinner />}
       {errorMsg && <h1>{errorMsg}</h1>}
       {categories.length ? <StartForm categories={categories} /> : ""}
