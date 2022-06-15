@@ -1,0 +1,25 @@
+.start-page {
+  text-align: center;
+}
+
+.start-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  align-items: center;
+  padding: 2rem;
+  width: 30rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .start-container {
+    width: 80%;
+  }
+}

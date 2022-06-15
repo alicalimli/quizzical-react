@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import StartForm from "../StartForm/StartForm";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
+import "./Start.css";
+
 const Start = () => {
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
