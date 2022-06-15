@@ -4,6 +4,8 @@ import Questions from "../Questions/Questions";
 import createQuestions from "../../Hooks/createQuestions";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
+import "./Quiz.css";
+
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
   const [quizScore, setQuizScore] = useState(null);
@@ -128,7 +130,6 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
-      {console.log(isPending, questions)}
       {errorMsg && <h1>{errorMsg}</h1>}
       {isPending && <LoadingSpinner />}
       {questions.length ? (

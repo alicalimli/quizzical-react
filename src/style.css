@@ -54,18 +54,6 @@ p {
 
 /* QUIZZES */
 
-.quiz-page {
-  width: 60vw;
-  gap: 2rem;
-  padding: 1rem;
-  margin: 2rem 0;
-}
-
-.quizzes-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .quiz-container {
   display: flex;
   flex-direction: column;
@@ -125,18 +113,6 @@ p {
 .incorrect {
   background-color: #f8bcbc !important;
   border: 1px solid black !important;
-}
-
-.btn-check-answers {
-  width: 100%;
-  margin: 2rem 0;
-}
-
-/* Back Button */
-
-.back-btn {
-  margin: 3rem 0;
-  width: fit-content;
 }
 
 @media screen and (max-width: 900px) {
