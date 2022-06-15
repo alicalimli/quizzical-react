@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import StartForm from "./StartForm";
+import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
 
 const Start = () => {
   const [isPending, setIsPending] = useState(false);
@@ -31,9 +32,9 @@ const Start = () => {
   return (
     <div className="start-page">
       {console.log(categories)}
-      {isPending && <h1>loading..</h1>}
+      {isPending && <LoadingSpinner />}
       {errorMsg && <h1>{errorMsg}</h1>}
-      {categories.length && <StartForm categories={categories} />}
+      {categories.length ? <StartForm categories={categories} /> : ""}
     </div>
   );
 };

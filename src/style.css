@@ -39,7 +39,7 @@ p {
   border-radius: 15px;
   background-color: #4d5b9e;
   transform: translateY(0);
-  transition: all 0.25s ease-in-out;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -49,7 +49,7 @@ p {
 }
 
 .btn:active {
-  transform: translateY(0%);
+  transform: translateY(0);
 }
 
 .start-page {
@@ -153,6 +153,7 @@ p {
 }
 
 .btn-check-answers {
+  width: 100%;
   margin: 2rem 0;
 }
 

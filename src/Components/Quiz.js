@@ -29,6 +29,8 @@ const Quiz = () => {
     answerBtn.classList.add("active");
 
     setAnswers(Object.assign(answers, answerObj));
+
+    console.log(answers);
   };
 
   const playAgainHandler = () => {
@@ -48,12 +50,15 @@ const Quiz = () => {
   };
 
   const checkAnswers = function () {
+    console.log(questions);
     const checkAnswerBtn = document.querySelector(".btn-check-answers");
     if (!quizScore) {
       const quizzesContainer = document.querySelector(".quizzes-container");
       const chosenAnswers = document.querySelectorAll(
         ".quiz-answer-btn.active"
       );
+
+      console.log(chosenAnswers);
 
       if (Object.keys(chosenAnswers).length < questions.length) return;
 
@@ -63,6 +68,9 @@ const Quiz = () => {
 
       questions.map((questionsData, i) => {
         const questionData = questionsData[`questionNumber-${i + 1}`];
+        const questionElement = document.querySelector(
+          `[data-question-number="${i + 1}"]`
+        );
 
         if (answers[i + 1] === questionData.correctAnswer) {
           score++;
@@ -72,11 +80,12 @@ const Quiz = () => {
         }
 
         // Highlight all the correct answers
-        const correctAnswerBtn = document.querySelector(
+        const correctAnswerBtn = questionElement.querySelector(
           `[data-answer-content="${questionData.correctAnswer}"]`
         );
 
         correctAnswerBtn.classList.add("correct");
+        console.log(correctAnswerBtn);
 
         checkAnswerBtn.textContent = "Play Again!";
       });

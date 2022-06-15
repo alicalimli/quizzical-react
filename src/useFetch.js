@@ -31,6 +31,8 @@ const dataFetch = async function (url) {
 
   const dataFetchResults = await data.json();
 
+  console.log(dataFetchResults, url);
+
   if (!data.ok || !dataFetchResults.results.length) {
     throw new Error("Oops, Something wen't wrong");
   }
