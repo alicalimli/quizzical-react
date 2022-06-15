@@ -1,8 +1,21 @@
-import { Link } from "react-router-dom";
-import "./Error.css";
+import { Link, useNavigate } from "react-router-dom";
 import bugImg from "../../Assets/bug-fixing.svg";
+import { useEffect } from "react";
 
-const Error = ({ errorMsg }) => {
+import "./Error.css";
+
+const Error = ({ errorMsg, isReloading }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/");
+      if (isReloading) {
+        document.location.reload();
+      }
+    }, 5000);
+  });
+
   return (
     <div className="error-container">
       <img src={bugImg} alt="" className="error-img" />
