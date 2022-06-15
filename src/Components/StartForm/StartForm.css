@@ -21,14 +21,3 @@
   font-size: 1.2rem;
   border-radius: 5px;
 }
-
-.quiz-form .start-btn {
-  margin-top: 1rem;
-  border-radius: 5px;
-}
-
-@media screen and (max-width: 400px) {
-  .start-btn {
-    width: 90%;
-  }
-}

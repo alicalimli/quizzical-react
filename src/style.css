@@ -36,9 +36,11 @@ p {
   padding: 1rem 2rem;
   color: white;
   font-size: 1.2rem;
-  border-radius: 15px;
+  border-radius: 5px;
   background-color: #4d5b9e;
   transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 /* Outlined Buttons */
