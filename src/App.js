@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Start from "./Components/StartPage/Start";
 import Quiz from "./Components/QuizPage/Quiz";
+import Error from "./Components/Error/Error";
 import { StrictMode } from "react";
 
 const App = () => {
@@ -12,6 +13,12 @@ const App = () => {
         <Routes>
           <Route path="/quiz/:difficulty/:category" element={<Quiz />} />
           <Route path="/" element={<Start />} />
+          <Route
+            path="*"
+            element={
+              <Error error404="true" errorMsg={"Oops, Something went wrong"} />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </StrictMode>

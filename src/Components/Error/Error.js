@@ -1,10 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import bugImg from "../../Assets/bug-fixing.svg";
+import error404Img from "../../Assets/404-error.svg";
 import { useEffect } from "react";
 
 import "./Error.css";
 
-const Error = ({ errorMsg, isReloading }) => {
+const Error = ({ errorMsg, isReloading, error404 }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,7 +19,12 @@ const Error = ({ errorMsg, isReloading }) => {
 
   return (
     <div className="error-container">
-      <img src={bugImg} alt="" className="error-img" />
+      {error404 ? (
+        <img src={error404Img} alt="" className="error-img" />
+      ) : (
+        <img src={bugImg} alt="" className="error-img" />
+      )}
+
       <h1>{errorMsg}</h1>
       <p>
         <Link to="/">Click Here</Link> or wait and you will be automatically
