@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import StartForm from "../StartForm/StartForm";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import ErrorPage from "../Error/Error";
 
 import "./Start.css";
 
@@ -23,7 +24,9 @@ const Start = () => {
         setIsPending(true);
         setErrorMsg("");
 
-        const categories = await fetch("https://opentdb.com/api_category.php");
+        const categories = await fetch(
+          "https://opentdb.com/api_category.php231423"
+        );
         const categoriesResults = await categories.json();
 
         localCache.categories = categoriesResults.trivia_categories || [];
@@ -42,7 +45,7 @@ const Start = () => {
   return (
     <div className="start-page">
       {isPending && <LoadingSpinner />}
-      {errorMsg && <h1>{errorMsg}</h1>}
+      {errorMsg && <ErrorPage errorMsg={errorMsg} />}
       {categories.length ? <StartForm categories={categories} /> : ""}
     </div>
   );

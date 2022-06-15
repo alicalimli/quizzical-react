@@ -1,0 +1,29 @@
+.error-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: auto;
+}
+
+.error-img {
+  max-width: 35rem;
+}
+
+.error-container h1 {
+  font-size: 2.4rem;
+}
+
+.error-container a {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 800px) {
+  .error-img {
+    width: 100%;
+  }
+  .error-container h1 {
+    font-size: 2rem;
+  }
+}
