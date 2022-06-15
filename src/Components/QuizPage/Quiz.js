@@ -134,7 +134,7 @@ const Quiz = () => {
       {isPending && <LoadingSpinner />}
       {questions.length ? (
         <div className="quizzes-container">
-          <Link className="back-btn" to="/">
+          <Link className="back-btn btn-hv btn-outline" to="/">
             Back
           </Link>
           {questions.length && (
@@ -148,7 +148,10 @@ const Quiz = () => {
           ) : (
             ""
           )}
-          <button className="btn btn-check-answers" onClick={checkAnswers}>
+          <button
+            className="btn btn-hv btn-check-answers"
+            onClick={checkAnswers}
+          >
             Check answers
           </button>
         </div>

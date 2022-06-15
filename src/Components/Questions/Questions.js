@@ -1,3 +1,5 @@
+import "./Questions.css";
+
 const Questions = ({ questions, answersBtnHandler }) => {
   return questions.map((data, index) => {
     const questionData = data[`questionNumber-${index + 1}`];
@@ -14,7 +16,7 @@ const Questions = ({ questions, answersBtnHandler }) => {
               <button
                 onClick={answersBtnHandler}
                 data-answer-content={answer}
-                className={`quiz-answer-btn`}
+                className={`quiz-answer-btn btn-hv btn-outline`}
               >
                 {answer}
               </button>

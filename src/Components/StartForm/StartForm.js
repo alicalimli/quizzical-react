@@ -57,7 +57,7 @@ const StartForm = ({ categories }) => {
           </select>
         </label>
 
-        <button className="btn start-btn">Start quiz</button>
+        <button className="btn btn-hv start-btn">Start quiz</button>
       </form>
     </div>
   );
