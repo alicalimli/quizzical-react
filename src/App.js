@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Start from "./Components/Start";
-import Quiz from "./Components/Quiz";
+import Start from "./Components/StartPage/Start";
+import Quiz from "./Components/QuizPage/Quiz";
 import { StrictMode } from "react";
 
 const App = () => {
