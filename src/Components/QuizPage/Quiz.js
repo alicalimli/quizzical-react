@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Questions from "./Questions";
+import Questions from "../Questions/Questions";
 import createQuestions from "../Hooks/createQuestions";
 import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
 

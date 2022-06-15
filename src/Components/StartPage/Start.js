@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import StartForm from "./StartForm";
+import StartForm from "../StartForm/StartForm";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const Start = () => {
