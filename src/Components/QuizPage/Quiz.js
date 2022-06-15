@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Questions from "../Questions/Questions";
-import createQuestions from "../Hooks/createQuestions";
-import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
+import createQuestions from "../../Hooks/createQuestions";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
