@@ -27,7 +27,7 @@ const Error = ({ isReloading, error404 }) => {
 
       <h1>Oops, Something went wrong</h1>
       <p>
-        <Link to="/">Click Here</Link>to go back or wait and you will be
+        <Link to="/">Click Here</Link> to go back or wait and you will be
         automatically redirected in the homepage in 5 seconds.
       </p>
     </div>

@@ -15,7 +15,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
 
   let { difficulty, category } = useParams();
-  const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}ssdsd`;
+  const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
 
   useEffect(() => {
     setIsPending(true);
