@@ -8,6 +8,7 @@ const Quiz = () => {
   const [quizScore, setQuizScore] = useState(null);
 
   const { difficulty, category } = useParams();
+
   const { isPending, errorMsg, questions } = useFetch(difficulty, category);
 
   const answersBtnHandler = function (e) {
@@ -33,12 +34,10 @@ const Quiz = () => {
   const playAgainHandler = () => {
     if (!document.querySelector(".quizzes-container")) return;
 
-    { isPending, errorMsg, questions } = useFetch(difficulty, category);
-    
     const quizAnswerBtns = document.querySelectorAll(".quiz-answer-btn");
     const quizzesContainer = document.querySelector(".quizzes-container");
 
-    setQuizScore();
+    setQuizScore(null);
     setAnswers({});
 
     quizzesContainer.classList.remove("checked");
@@ -104,8 +103,10 @@ const Quiz = () => {
               answersBtnHandler={answersBtnHandler}
             />
           )}
-          {quizScore && (
+          {quizScore !== null ? (
             <h1>{`You scored ${quizScore} out of ${questions.length} questions`}</h1>
+          ) : (
+            ""
           )}
           <button className="btn btn-check-answers" onClick={checkAnswers}>
             Check answers

@@ -21,7 +21,7 @@ const useFetch = (difficultyLevel, categoryNumber) => {
         setIsPending(false);
         setErrorMsg(error.message);
       });
-  }, [categoryNumber, difficultyLevel]);
+  }, [url]);
 
   return { isPending, errorMsg, questions };
 };
