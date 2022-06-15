@@ -1,16 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import useFetch from "../useFetch";
+import useFetch from "../Hooks/useFetch";
 import Questions from "./Questions";
+import createQuestions from "../Hooks/createQuestions";
 import LoadingSpinner from "./LoadingSpinner/LoadingSpinner";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
   const [quizScore, setQuizScore] = useState(null);
+  const [isPending, setIsPending] = useState(true);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [questions, setQuestions] = useState([]);
 
-  const { difficulty, category } = useParams();
+  let { difficulty, category } = useParams();
+  const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
 
-  const { isPending, errorMsg, questions } = useFetch(difficulty, category);
+  useEffect(() => {
+    dataFetch(url);
+  }, [url]);
+
+  const dataFetch = function (url) {
+    useFetch(url)
+      .then((data) => {
+        const newQuestionsObj = createQuestions(data.results);
+
+        setQuestions(newQuestionsObj);
+
+        setIsPending(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsPending(false);
+        setErrorMsg(error.message);
+      });
+  };
 
   const answersBtnHandler = function (e) {
     const btnParent = e.target.closest(".quiz-container");
@@ -93,6 +116,7 @@ const Quiz = () => {
 
       setQuizScore(score);
     } else {
+      category = "asdsd";
       playAgainHandler();
       checkAnswerBtn.textContent = "Check Answers";
     }
