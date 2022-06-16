@@ -1,8 +1,12 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import "./Modal.css";
 
 const Modal = ({ children }) => {
-  return <div className="modal"> {children} </div>;
+  return createPortal(
+    <div className="modal-container"> {children} </div>,
+    document.getElementById("modal")
+  );
 };
 
 export default Modal;
