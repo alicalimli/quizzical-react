@@ -9,13 +9,17 @@ const Error = ({ isReloading, error404 }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setTimeout(() => {
+    const redirect = setTimeout(() => {
       navigate("/");
       if (isReloading) {
         document.location.reload();
       }
     }, 5000);
-  });
+    return () => {
+      console.log("cleared");
+      clearTimeout(redirect);
+    };
+  }, []);
 
   return (
     <div className="error-container">
