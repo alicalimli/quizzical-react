@@ -149,7 +149,7 @@ const Quiz = () => {
             <h2>
               {quizScore > 2 ? "Congratulations! 👏‍" : "Try again next time!"}
             </h2>
-            <p>You Scored {quizScore}/5 correct answers.</p>
+            <p>{`You Scored ${quizScore} / ${questions.length} correct answers.`}</p>
             <p>Category: {categoryName}</p>
             <p>Difficulty: {difficulty}</p>
             <button className="btn btn-hv" onClick={playAgainHandler}>
@@ -172,7 +172,7 @@ const Quiz = () => {
             />
           )}
           {quizScore !== null ? (
-            <h1>{`You scored ${quizScore} out of ${questions.length} questions`}</h1>
+            <h2 className="score-text">{`You scored ${quizScore} / ${questions.length} correct answers.`}</h2>
           ) : (
             ""
           )}

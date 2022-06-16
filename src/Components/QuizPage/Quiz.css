@@ -14,6 +14,11 @@
   flex-direction: column;
 }
 
+.score-text {
+  margin: 1rem 0;
+  font-size: 2.6rem;
+}
+
 .play-again-modal {
   background-color: white;
   text-align: left;
