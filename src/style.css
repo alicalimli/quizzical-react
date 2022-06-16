@@ -22,9 +22,9 @@ body {
 }
 
 h1 {
-  font-style: normal;
-  font-weight: 700;
   font-size: 3rem;
+  word-wrap: break-word;
+  line-height: 1;
 }
 
 p {
@@ -75,4 +75,10 @@ p {
 
 .btn-hv:active {
   transform: unset;
+}
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 90%;
+  }
 }

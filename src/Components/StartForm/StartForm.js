@@ -28,8 +28,10 @@ const StartForm = ({ categories }) => {
   return (
     <div className="start-container">
       {" "}
-      <h1>Quizzical</h1>
-      <p>Answer fun trivia questions! </p>
+      <div className="title">
+        <h1>Quizzical</h1>
+        <p>Answer fun trivia questions! </p>
+      </div>
       <form className="quiz-form" onSubmit={formActionHandler}>
         <label htmlFor="select-category">
           Category
