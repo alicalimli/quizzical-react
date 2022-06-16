@@ -47,7 +47,7 @@ p {
 /* Outlined Buttons */
 
 .btn-outline {
-  border-radius: 15px;
+  border-radius: 5px;
   cursor: pointer;
   padding: 0.3rem 1rem;
   border: solid 1px #4d5b9e;
