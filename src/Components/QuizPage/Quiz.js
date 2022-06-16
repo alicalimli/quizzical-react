@@ -157,19 +157,13 @@ const Quiz = () => {
                 Play Again!
               </button>
               <a
-                href="https://twitter.com/share?ref_src=twsrc%5Etfw"
                 className="btn btn-hv twitter-share-button"
-                data-text="I scored 5 / 5 correct anwer on Quizzical"
-                data-via="alicalimli_dev"
-                data-show-count="false"
+                href="https://twitter.com/intent/tweet?text=I scored 5 / 5 correct answers on Quizzical, Come and try it out:
+                https://quizzical.netlify.app/"
+                data-size="large"
               >
-                Share on Twitter
+                Tweet
               </a>
-              <script
-                async
-                src="https://platform.twitter.com/widgets.js"
-                charset="utf-8"
-              ></script>
             </div>
           </div>
         </Modal>
