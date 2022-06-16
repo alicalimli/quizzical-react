@@ -4,6 +4,7 @@ import Questions from "../Questions/Questions";
 import createQuestions from "../../Hooks/createQuestions";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import Error from "../Error/Error";
+import Modal from "../Modal/Modal";
 
 import "./Quiz.css";
 
@@ -13,6 +14,7 @@ const Quiz = () => {
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [questions, setQuestions] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   let { difficulty, category } = useParams();
   const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
@@ -124,6 +126,7 @@ const Quiz = () => {
       });
 
       setQuizScore(score);
+      setIsModalOpen(true);
     } else {
       category = "asdsd";
       playAgainHandler();
@@ -133,6 +136,7 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
+      {isModalOpen && <Modal>asdasd</Modal>}
       {errorMsg && <Error />}
       {isPending && <LoadingSpinner />}
       {questions.length ? (
