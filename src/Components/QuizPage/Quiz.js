@@ -77,6 +77,7 @@ const Quiz = () => {
       btn.classList.remove("incorrect", "correct", "active");
     });
 
+    setIsModalOpen(false);
     setQuizScore(null);
     setAnswers({});
     setQuestions([]);
@@ -143,7 +144,9 @@ const Quiz = () => {
             <p>You Scored 5 out 5 questions.</p>
             <p>Category: Computers</p>
             <p>Difficulty: Hard</p>
-            <button className="btn btn-hv">Play Again!</button>
+            <button className="btn btn-hv" onClick={playAgainHandler}>
+              Play Again!
+            </button>
           </div>
         </Modal>
       )}
