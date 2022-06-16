@@ -138,7 +138,7 @@ const Quiz = () => {
   return (
     <div className="quiz-page">
       {isModalOpen && (
-        <Modal>
+        <Modal setIsModalOpen={setIsModalOpen}>
           <div className="play-again-modal">
             <h2>Congratulations</h2>
             <p>You Scored 5 out 5 questions.</p>
