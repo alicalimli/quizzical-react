@@ -152,9 +152,25 @@ const Quiz = () => {
             <p>{`You Scored ${quizScore} / ${questions.length} correct answers.`}</p>
             <p>Category: {categoryName}</p>
             <p>Difficulty: {difficulty}</p>
-            <button className="btn btn-hv" onClick={playAgainHandler}>
-              Play Again!
-            </button>
+            <div className="modal-btns">
+              <button className="btn btn-hv" onClick={playAgainHandler}>
+                Play Again!
+              </button>
+              <a
+                href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                className="btn btn-hv twitter-share-button"
+                data-text="I scored 5 / 5 correct anwer on Quizzical"
+                data-via="alicalimli_dev"
+                data-show-count="false"
+              >
+                Share on Twitter
+              </a>
+              <script
+                async
+                src="https://platform.twitter.com/widgets.js"
+                charset="utf-8"
+              ></script>
+            </div>
           </div>
         </Modal>
       )}
