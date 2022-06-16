@@ -16,7 +16,7 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  let { difficulty, category } = useParams();
+  let { difficulty, categoryName, category } = useParams();
   const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
 
   useEffect(() => {
@@ -141,9 +141,9 @@ const Quiz = () => {
         <Modal setIsModalOpen={setIsModalOpen}>
           <div className="play-again-modal">
             <h2>Congratulations</h2>
-            <p>You Scored 5 out 5 questions.</p>
-            <p>Category: Computers</p>
-            <p>Difficulty: Hard</p>
+            <p>You Scored {quizScore}/5 correct answers.</p>
+            <p>Category: {categoryName}</p>
+            <p>Difficulty: {difficulty}</p>
             <button className="btn btn-hv" onClick={playAgainHandler}>
               Play Again!
             </button>

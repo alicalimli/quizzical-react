@@ -5,13 +5,24 @@ import { useNavigate } from "react-router-dom";
 
 const StartForm = ({ categories }) => {
   const [difficulty, setDifficulty] = useState("easy");
+  const [categoryName, setCategoryName] = useState();
   const [category, setCategory] = useState();
 
   const navigate = useNavigate();
 
   const formActionHandler = (e) => {
     e.preventDefault();
-    navigate(`/quiz/${difficulty}/${category}`);
+    navigate(`/quiz/${difficulty}/${categoryName}/${category}`);
+  };
+
+  const handleControlledInputs = (e) => {
+    // Takes the text of whatever is the content of the selected option
+    const categoryText = e.target.options[e.target.selectedIndex].text;
+    const newCategoryText =
+      categoryText.replace(/\s/g, "").split(":")[1] || categoryText;
+
+    setCategory(e.target.value);
+    setCategoryName(newCategoryText);
   };
 
   return (
@@ -25,8 +36,8 @@ const StartForm = ({ categories }) => {
           <select
             required
             id="select-category"
-            onChange={(e) => setCategory(e.target.value)}
-            onBlur={(e) => setCategory(e.target.value)}
+            onChange={handleControlledInputs}
+            onBlur={handleControlledInputs}
           >
             <option
               value=""

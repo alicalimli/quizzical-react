@@ -10,10 +10,7 @@ const Modal = ({ children, setIsModalOpen }) => {
   });
 
   return createPortal(
-    <div aria-hidden className="modal-container">
-      {" "}
-      {children}{" "}
-    </div>,
+    <div className="modal-container"> {children} </div>,
     document.getElementById("modal")
   );
 };

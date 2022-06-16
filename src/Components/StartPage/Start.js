@@ -44,7 +44,14 @@ const Start = () => {
     <div className="start-page">
       {isPending && <LoadingSpinner />}
       {errorMsg && <ErrorPage isReloading="true" />}
-      {categories.length ? <StartForm categories={categories} /> : ""}
+      {categories.length ? (
+        <StartForm
+          categories={categories}
+          categoriesData={localCache.categories}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };
