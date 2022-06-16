@@ -140,7 +140,15 @@ const Quiz = () => {
       {isModalOpen && (
         <Modal setIsModalOpen={setIsModalOpen}>
           <div className="play-again-modal">
-            <h2>Congratulations</h2>
+            <button
+              className="modal-back back-btn btn-hv btn-outline"
+              onClick={() => setIsModalOpen(false)}
+            >
+              Back
+            </button>
+            <h2>
+              {quizScore > 2 ? "Congratulations! 👏‍" : "Try again next time!"}
+            </h2>
             <p>You Scored {quizScore}/5 correct answers.</p>
             <p>Category: {categoryName}</p>
             <p>Difficulty: {difficulty}</p>

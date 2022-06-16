@@ -26,6 +26,11 @@
   gap: 1rem;
 }
 
+.modal-back {
+  margin: 0;
+  margin-bottom: 1.5rem;
+}
+
 @media screen and (max-width: 900px) {
   .quiz-page {
     width: 100%;
