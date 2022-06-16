@@ -136,7 +136,17 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
-      {isModalOpen && <Modal>asdasd</Modal>}
+      {isModalOpen && (
+        <Modal>
+          <div className="play-again-modal">
+            <h2>Congratulations</h2>
+            <p>You Scored 5 out 5 questions.</p>
+            <p>Category: Computers</p>
+            <p>Difficulty: Hard</p>
+            <button className="btn btn-hv">Play Again!</button>
+          </div>
+        </Modal>
+      )}
       {errorMsg && <Error />}
       {isPending && <LoadingSpinner />}
       {questions.length ? (
