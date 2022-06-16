@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   font-family: "Karla", sans-serif;
   text-decoration: none;
   background: none;

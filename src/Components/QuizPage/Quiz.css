@@ -63,7 +63,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  .quiz-page {
-    text-align: center;
+  .play-again-modal {
+    width: 80%;
   }
 }

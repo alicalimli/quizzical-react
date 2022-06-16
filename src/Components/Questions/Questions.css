@@ -39,9 +39,3 @@
   background-color: #f8bcbc !important;
   border: 1px solid black !important;
 }
-
-@media screen and (max-width: 400px) {
-  .quiz-answers {
-    justify-content: center;
-  }
-}
