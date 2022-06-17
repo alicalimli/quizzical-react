@@ -15,6 +15,7 @@ const Quiz = () => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [btnTextContent, setBtnTextContent] = useState("Check Answers!");
 
   let { difficulty, categoryName, category } = useParams();
   const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
@@ -97,9 +98,9 @@ const Quiz = () => {
       console.log(chosenAnswers);
 
       if (Object.keys(chosenAnswers).length < questions.length) {
-        checkAnswerBtn.textContent = "Please answer every questions!";
+        setBtnTextContent("Please answer every questions!");
         checkAnswerBtn.classList.add("warning!");
-        setTimeout(() => (checkAnswerBtn.textContent = "Check answers"), 1500);
+        setTimeout(() => setBtnTextContent("Check Answers"), 1500);
         return;
       }
 
@@ -128,7 +129,7 @@ const Quiz = () => {
         correctAnswerBtn.classList.add("correct");
         console.log(correctAnswerBtn);
 
-        checkAnswerBtn.textContent = "Play Again!";
+        setBtnTextContent("Play Again!");
       });
 
       setQuizScore(score);
@@ -136,7 +137,7 @@ const Quiz = () => {
     } else {
       category = "asdsd";
       playAgainHandler();
-      checkAnswerBtn.textContent = "Check Answers";
+      setBtnTextContent("Check Answers");
     }
   };
 
@@ -195,7 +196,7 @@ const Quiz = () => {
             className="btn btn-hv btn-check-answers"
             onClick={checkAnswers}
           >
-            Check answers
+            {btnTextContent}
           </button>
         </div>
       ) : null}
