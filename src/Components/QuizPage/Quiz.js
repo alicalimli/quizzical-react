@@ -167,8 +167,7 @@ const Quiz = () => {
               </button>
               <a
                 className="btn btn-hv twitter-share-button"
-                href="https://twitter.com/intent/tweet?text=I scored 5 / 5 correct answers on Quizzical, Come and try it out:
-                https://quizzical-ali.netlify.app/"
+                href={`https://twitter.com/intent/tweet?text=I scored ${quizScore} out of ${questions.length} correct answers in the ${categoryName} category with a ${difficulty} difficulty on Quizzical, Come and try it out: https://quizzical-ali.netlify.app/`}
                 data-size="large"
               >
                 Share on twitter
