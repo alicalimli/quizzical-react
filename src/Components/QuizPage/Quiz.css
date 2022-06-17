@@ -19,6 +19,12 @@
   font-size: 2.6rem;
 }
 
+.btn-check-answers.warning {
+  background-color: red;
+}
+
+/* Modal */
+
 .modal-btns {
   display: flex;
   text-align: center;
