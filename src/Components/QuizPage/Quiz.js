@@ -168,10 +168,10 @@ const Quiz = () => {
               <a
                 className="btn btn-hv twitter-share-button"
                 href="https://twitter.com/intent/tweet?text=I scored 5 / 5 correct answers on Quizzical, Come and try it out:
-                https://quizzical.netlify.app/"
+                https://quizzical-ali.netlify.app/"
                 data-size="large"
               >
-                Tweet
+                Share on twitter
               </a>
             </div>
           </div>
