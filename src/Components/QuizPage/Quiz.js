@@ -99,8 +99,11 @@ const Quiz = () => {
 
       if (Object.keys(chosenAnswers).length < questions.length) {
         setBtnTextContent("Please answer every questions!");
-        checkAnswerBtn.classList.add("warning!");
-        setTimeout(() => setBtnTextContent("Check Answers"), 1500);
+        checkAnswerBtn.classList.add("warning");
+        setTimeout(() => {
+          checkAnswerBtn.classList.remove("warning");
+          setBtnTextContent("Check Answers");
+        }, 1500);
         return;
       }
 
