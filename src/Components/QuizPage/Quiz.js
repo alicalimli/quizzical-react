@@ -96,7 +96,11 @@ const Quiz = () => {
 
       console.log(chosenAnswers);
 
-      if (Object.keys(chosenAnswers).length < questions.length) return;
+      if (Object.keys(chosenAnswers).length < questions.length) {
+        checkAnswerBtn.textContent = "Please answer every questions!";
+        setTimeout(() => (checkAnswerBtn.textContent = "Check answers"), 1500);
+        return;
+      }
 
       let score = 0;
 
