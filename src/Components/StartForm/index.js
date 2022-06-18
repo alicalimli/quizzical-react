@@ -27,7 +27,6 @@ const StartForm = ({ categories }) => {
 
   return (
     <div className="start-container">
-      {" "}
       <div className="title">
         <h1>Quizzical</h1>
         <p>Answer fun trivia questions! </p>
@@ -69,7 +68,6 @@ const StartForm = ({ categories }) => {
             <option value="hard">Hard</option>
           </select>
         </label>
-
         <button className="btn btn-hv start-btn">Start quiz</button>
       </form>
     </div>

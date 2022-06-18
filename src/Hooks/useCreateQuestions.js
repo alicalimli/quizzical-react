@@ -1,8 +1,8 @@
-const createQuestions = function (questionObj) {
+const useCreateQuestions = function (questionObj) {
   const newQuestionObj = questionObj.map((questionData, i) => {
     const answersArr = questionData.incorrect_answers
       .concat(questionData.correct_answer)
-      .sort((a, b) => 0.5 - Math.random());
+      .sort(() => 0.5 - Math.random());
 
     return {
       [`questionNumber-${i + 1}`]: {
@@ -16,4 +16,4 @@ const createQuestions = function (questionObj) {
   return newQuestionObj;
 };
 
-export default createQuestions;
+export default useCreateQuestions;

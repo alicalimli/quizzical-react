@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Questions from "../Questions/Questions";
-import createQuestions from "../../Hooks/createQuestions";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import Error from "../Error/Error";
-import Modal from "../Modal/Modal";
+import Questions from "../../Components/Questions";
+import useCreateQuestions from "../../Hooks/useCreateQuestions";
+import LoadingSpinner from "../../Components/LoadingSpinner";
+import Error from "../Error";
+import Modal from "../../Components/Modal";
 
 import "./Quiz.css";
 
@@ -20,16 +20,11 @@ const Quiz = () => {
   let { difficulty, categoryName, category } = useParams();
   const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
 
-  useEffect(() => {
-    setIsPending(true);
-    dataFetch(url);
-  }, [url]);
-
-  const dataFetch = function (url) {
-    const data = fetch(url)
+  function dataFetch(url) {
+    fetch(url)
       .then((data) => data.json())
       .then((data) => {
-        const newQuestionsObj = createQuestions(data.results);
+        const newQuestionsObj = useCreateQuestions(data.results);
 
         if (!data.results.length) throw new Error();
 
@@ -42,7 +37,7 @@ const Quiz = () => {
         setIsPending(false);
         setErrorMsg(error.message);
       });
-  };
+  }
 
   const answersBtnHandler = function (e) {
     const btnParent = e.target.closest(".quiz-container");
@@ -143,6 +138,17 @@ const Quiz = () => {
       setBtnTextContent("Check Answers");
     }
   };
+
+  /**
+   * It's better to use useEffect hook after initializing all the states variables
+   * */
+  useEffect(() => {
+    setIsPending(true);
+    dataFetch(url);
+    return () => {
+      setIsPending(false);
+    };
+  }, [url]);
 
   return (
     <div className="quiz-page">
