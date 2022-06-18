@@ -34,15 +34,20 @@
 }
 
 .play-again-modal {
-  background-color: white;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-bg-color);
   text-align: left;
   padding: 2rem;
   width: 30rem;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.play-again-modal h2,
+.play-again-modal p {
+  color: var(--secondary-text-color);
 }
 
 .twitter-share-button {
