@@ -1,4 +1,8 @@
-const useCreateQuestions = function (questionObj) {
+/**
+ * It's better to separate the functions that are vanilla JS (without any hooks or any react related stuff)
+ * into Utils folder
+ * */
+const CreateQuestions = function (questionObj) {
   const newQuestionObj = questionObj.map((questionData, i) => {
     const answersArr = questionData.incorrect_answers
       .concat(questionData.correct_answer)
@@ -16,4 +20,4 @@ const useCreateQuestions = function (questionObj) {
   return newQuestionObj;
 };
 
-export default useCreateQuestions;
+export default CreateQuestions;

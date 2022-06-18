@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Questions from "../../Components/Questions";
-import useCreateQuestions from "../../Hooks/useCreateQuestions";
+import CreateQuestions from "../../Utils/CreateQuestions";
 import LoadingSpinner from "../../Components/LoadingSpinner";
 import Error from "../Error";
 import Modal from "../../Components/Modal";
@@ -24,7 +24,7 @@ const Quiz = () => {
     fetch(url)
       .then((data) => data.json())
       .then((data) => {
-        const newQuestionsObj = useCreateQuestions(data.results);
+        const newQuestionsObj = CreateQuestions(data.results);
 
         if (!data.results.length) throw new Error();
 
