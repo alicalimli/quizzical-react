@@ -5,6 +5,11 @@
   gap: 1rem;
 }
 
+.title h1,
+.title p {
+  color: var(--secondary-text-color);
+}
+
 .quiz-form {
   display: flex;
   width: 100%;
@@ -15,16 +20,17 @@
 }
 
 .quiz-form label {
-  color: #6470ac;
+  color: var(--tooltip-text-color);
   font-weight: 500;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #dbdef0;
+  border-bottom: 1px solid var(--border-bottom-color);
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
 .quiz-form select {
+  color: var(--secondary-text-color);
   font-size: 1.2rem;
   border-radius: 5px;
 }

@@ -10,6 +10,8 @@
   --primary-text-color: #111;
   --secondary-text-color: #293264;
 
+  --border-bottom-color: #dbdef0;
+
   --tooltip-text-color: #6470ac;
 
   --footer-text-color: #343a40;
@@ -31,11 +33,13 @@
 
   /* Text Colors */
   --primary-text-color: white;
-  --secondary-text-color: #293264;
+  --secondary-text-color: #d4d6e0;
 
-  --tooltip-text-color: #6470ac;
+  --border-bottom-color: #6e6f78;
 
-  --box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+  --tooltip-text-color: #939bc5;
+
+  --box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
 
   --footer-text-color: #adb5bd;
 
