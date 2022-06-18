@@ -6,10 +6,11 @@
   gap: 1rem;
   padding: 0.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid #dbdef0;
+  border-bottom: 1px solid var(--border-bottom-color);
 }
 
 .quiz-question {
+  color: var(--secondary-text-color);
   font-weight: 700;
   font-size: 1.2rem;
 }
@@ -20,22 +21,28 @@
   gap: 1rem;
 }
 
+.quiz-answer-btn {
+  color: var(--secondary-text-color);
+}
+
 .quizzes-container.checked .quiz-answer-btn {
   opacity: 0.5;
 }
 
 .quiz-answer-btn.active {
   border: 1px solid transparent;
-  background-color: #d6dbf5;
+  background-color: var(--btn-outline-hover-color);
 }
 
 .correct {
+  color: #293264;
   background-color: #94d7a2 !important;
   border: 1px solid transparent !important;
   opacity: unset !important;
 }
 
 .incorrect {
+  color: #293264;
   background-color: #f8bcbc !important;
   border: 1px solid black !important;
 }

@@ -16,6 +16,8 @@
 
   --footer-text-color: #343a40;
 
+  --btn-outline-hover-color: #d6dbf5;
+
   --box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
 
   /* Accent Colors */
@@ -42,6 +44,8 @@
   --box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
 
   --footer-text-color: #adb5bd;
+
+  --btn-outline-hover-color: #2b2c31;
 
   /* Accent Colors */
   --primary-accent-color: #6470ac;

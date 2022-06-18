@@ -49,14 +49,15 @@ p {
 
 .btn-outline {
   border-radius: 5px;
+  color: var(--secondary-text-color);
   cursor: pointer;
   padding: 0.3rem 1rem;
-  border: solid 1px #4d5b9e;
+  border: solid 1px var(--secondary-text-color);
   transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-  background-color: #d6dbf5;
+  background-color: var(--btn-outline-hover-color);
 }
 
 /* Hover Effects for buttons */
