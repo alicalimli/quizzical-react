@@ -156,9 +156,9 @@ const Quiz = () => {
 
   return (
     <motion.div
-      animate={{ opacity: 1, x: 0 }}
-      initial={{ opacity: 0, x: -1000 }}
-      exit={{ opacity: 0, x: -1000 }}
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
       className="quiz-page"
     >
       {isModalOpen && (

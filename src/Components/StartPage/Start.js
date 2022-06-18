@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import StartForm from "../StartForm/StartForm";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import ErrorPage from "../Error/Error";
@@ -41,7 +42,12 @@ const Start = () => {
   };
 
   return (
-    <div className="start-page">
+    <motion.div
+      animate={{ scale: 1 }}
+      initial={{ scale: 0.8 }}
+      transition={{ type: "spring", duration: 0.3 }}
+      className="start-page"
+    >
       {isPending && <LoadingSpinner />}
       {errorMsg && <ErrorPage isReloading="true" />}
       {categories.length ? (
@@ -52,7 +58,7 @@ const Start = () => {
       ) : (
         ""
       )}
-    </div>
+    </motion.div>
   );
 };
 
