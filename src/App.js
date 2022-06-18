@@ -5,11 +5,16 @@ import Start from "./Components/StartPage/Start";
 import Quiz from "./Components/QuizPage/Quiz";
 import Error from "./Components/Error/Error";
 import { FaMoon } from "react-icons/fa";
+import { BsFillSunFill } from "react-icons/bs";
+
 import { StrictMode } from "react";
 
 const App = () => {
   const toggleDarkMode = () => {
     const body = document.body;
+    const darkmodeBtn = body.querySelector(".darkmode-btn");
+
+    darkmodeBtn.classList.toggle("active");
     body.classList.toggle("darkmode");
   };
 
@@ -18,7 +23,8 @@ const App = () => {
       <BrowserRouter>
         <div className="App">
           <button onClick={toggleDarkMode} className="darkmode-btn">
-            <FaMoon />
+            <FaMoon className="moon-icon" />
+            <BsFillSunFill className="sun-icon" />
           </button>
           <div className="content">
             <Routes>

@@ -14,25 +14,6 @@
   margin: 0;
 }
 
-.darkmode-btn {
-  color: var(--secondary-text-color);
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: scale(1) translateX(-50%);
-  cursor: pointer;
-  font-size: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.darkmode-btn * {
-  color: var(--secondary-text-color);
-}
-
-.darkmode-btn:hover {
-  transform: scale(1.05) translateX(-50%);
-}
-
 body {
   background-color: var(--secondary-bg-color);
   min-height: 100vh;
@@ -97,6 +78,50 @@ p {
 
 .btn-hv:active {
   transform: unset;
+}
+
+/* darkmode button */
+
+.darkmode-btn {
+  color: var(--secondary-text-color);
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: rotate(0) translateX(-50%);
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.darkmode-btn * {
+  color: var(--secondary-text-color);
+}
+
+.sun-icon {
+  transition: all 0.3s ease;
+  position: absolute;
+  opacity: 0;
+}
+
+.moon-icon {
+  transition: all 0.3s ease;
+  position: absolute;
+  opacity: 1;
+}
+
+.darkmode-btn.active .sun-icon {
+  transform: rotate(360deg);
+  opacity: 1;
+}
+
+.darkmode-btn.active .moon-icon {
+  transform: rotate(360deg);
+  opacity: 0;
 }
 
 @media screen and (max-width: 400px) {
