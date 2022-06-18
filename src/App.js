@@ -12,11 +12,9 @@ const App = () => {
     <StrictMode>
       <BrowserRouter>
         <div className="App">
-          <header>
-            <button>
-              <FaMoon />
-            </button>
-          </header>
+          <button className="darkmode-btn">
+            <FaMoon />
+          </button>
           <div className="content">
             <Routes>
               <Route
