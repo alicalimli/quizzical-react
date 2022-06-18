@@ -1,13 +1,14 @@
 import React from "react";
 import { createPortal } from "react-dom";
+
 import "./Modal.css";
 
+import useKeyDown from "../../Hooks/useKeyDown";
+
 const Modal = ({ children, setIsModalOpen }) => {
-  window.addEventListener("keydown", function (e) {
-    if (e.key !== "Escape") return;
+  useKeyDown(() => {
     setIsModalOpen(false);
-    console.log(e);
-  });
+  }, "Escape");
 
   return createPortal(
     <div className="modal-container"> {children} </div>,
