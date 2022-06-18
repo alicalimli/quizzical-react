@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import StartForm from "../StartForm/StartForm";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import ErrorPage from "../Error/Error";
+import StartForm from "../../Components/StartForm";
+import LoadingSpinner from "../../Components/LoadingSpinner";
+import ErrorPage from "../Error";
 
 import "./Start.css";
 

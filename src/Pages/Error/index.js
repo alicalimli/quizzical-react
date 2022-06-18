@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import bugImg from "../../Assets/bug-fixing.svg";
-import error404Img from "../../Assets/404-error.svg";
+
 import { useEffect } from "react";
 
 import "./Error.css";
+import { bugImg, error404Img } from "../../Assets";
 
 const Error = ({ isReloading, error404 }) => {
   const navigate = useNavigate();
@@ -11,9 +11,7 @@ const Error = ({ isReloading, error404 }) => {
   useEffect(() => {
     const redirect = setTimeout(() => {
       navigate("/");
-      if (isReloading) {
-        document.location.reload();
-      }
+      if (isReloading) document.location.reload();
     }, 5000);
     return () => {
       console.log("cleared");
@@ -24,9 +22,9 @@ const Error = ({ isReloading, error404 }) => {
   return (
     <div className="error-container">
       {error404 ? (
-        <img src={error404Img} alt="" className="error-img" />
+        <img src={error404Img} alt="error image" className="error-img" />
       ) : (
-        <img src={bugImg} alt="" className="error-img" />
+        <img src={bugImg} alt="bug image" className="error-img" />
       )}
 
       <h1>Oops, Something went wrong</h1>

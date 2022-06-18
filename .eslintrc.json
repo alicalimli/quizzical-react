@@ -9,7 +9,8 @@
   ],
   "rules": {
     "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0
+    "react/react-in-jsx-scope": 0,
+    "import/extensions": "off"
   },
   "plugins": ["react", "import", "jsx-a11y", "react-hooks"],
   "parserOptions": {
@@ -26,7 +27,11 @@
   },
   "settings": {
     "react": {
-      "version": "detect"
+      "version": "detect",
+      "import/resolver": {
+        "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
     }
   }
 }
