@@ -11,6 +11,9 @@ import useMakeQuestions from "../../Hooks/useMakeQuestions";
 import "./Quiz.css";
 
 const Quiz = () => {
+  let { difficulty, categoryName, category } = useParams();
+  const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
+
   const [answers, setAnswers] = useState({});
   const [quizScore, setQuizScore] = useState(null);
   const [isPending, setIsPending] = useState(false);
@@ -18,9 +21,6 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [btnTextContent, setBtnTextContent] = useState("Check Answers!");
-
-  let { difficulty, categoryName, category } = useParams();
-  const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
 
   const dataFetch = function (url) {
     const data = fetch(url)
@@ -59,8 +59,14 @@ const Quiz = () => {
     answerBtn.classList.add("active");
 
     setAnswers(Object.assign(answers, answerObj));
+  };
 
-    console.log(answers);
+  const resetData = function () {
+    setIsPending(true);
+    setIsModalOpen(false);
+    setQuizScore(null);
+    setAnswers({});
+    setQuestions([]);
   };
 
   const playAgainHandler = () => {
@@ -75,11 +81,7 @@ const Quiz = () => {
       btn.classList.remove("incorrect", "correct", "active");
     });
 
-    setIsModalOpen(false);
-    setQuizScore(null);
-    setAnswers({});
-    setQuestions([]);
-    setIsPending(true);
+    resetData();
     dataFetch(url);
   };
 
