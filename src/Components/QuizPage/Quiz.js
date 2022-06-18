@@ -93,6 +93,8 @@ const Quiz = () => {
         ".quiz-answer-btn.active"
       );
 
+      // If check button has been clicked and all questions haven't been answered,
+      // this would prompt the user.
       if (Object.keys(chosenAnswers).length < questions.length) {
         setBtnTextContent("Please answer every questions!");
         checkAnswerBtn.classList.add("warning");
@@ -107,7 +109,8 @@ const Quiz = () => {
 
       quizzesContainer.classList.add("checked");
 
-      questions.map((questionsData, i) => {
+      // Goes through each questions and checks it one by one.
+      questions.forEach((questionsData, i) => {
         const questionData = questionsData[`questionNumber-${i + 1}`];
         const questionElement = document.querySelector(
           `[data-question-number="${i + 1}"]`
@@ -120,13 +123,12 @@ const Quiz = () => {
           chosenAnswers[i].classList.add("incorrect");
         }
 
-        // Highlight all the correct answers
+        // Always highlight the correct answer.
         const correctAnswerBtn = questionElement.querySelector(
           `[data-answer-content="${questionData.correctAnswer}"]`
         );
 
         correctAnswerBtn.classList.add("correct");
-        console.log(correctAnswerBtn);
 
         setBtnTextContent("Play Again!");
       });
