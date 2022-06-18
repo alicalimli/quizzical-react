@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import bugImg from "../../Assets/bug-fixing.svg";
+import bugImg from "../../Assets/error.svg";
 import error404Img from "../../Assets/404-error.svg";
 import { useEffect } from "react";
 
