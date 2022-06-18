@@ -5,6 +5,7 @@ import createQuestions from "../../Hooks/createQuestions";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import Error from "../Error/Error";
 import Modal from "../Modal/Modal";
+import { motion } from "framer-motion";
 
 import "./Quiz.css";
 
@@ -148,7 +149,12 @@ const Quiz = () => {
     <div className="quiz-page">
       {isModalOpen && (
         <Modal setIsModalOpen={setIsModalOpen}>
-          <div className="play-again-modal">
+          <motion.div
+            animate={{ scale: 1 }}
+            initial={{ scale: 0.5 }}
+            transition={{ type: "spring", duration: 0.3 }}
+            className="play-again-modal"
+          >
             <button
               className="modal-back back-btn btn-hv btn-outline"
               onClick={() => setIsModalOpen(false)}
@@ -173,7 +179,7 @@ const Quiz = () => {
                 Share on twitter
               </a>
             </div>
-          </div>
+          </motion.div>
         </Modal>
       )}
       {errorMsg && <Error />}
