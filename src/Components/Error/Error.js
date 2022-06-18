@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import bugImg from "../../Assets/error.svg";
-import error404Img from "../../Assets/404-error.svg";
+import { errorImg, error404Img } from "../../Assets";
 import { useEffect } from "react";
 
 import "./Error.css";
@@ -26,7 +25,7 @@ const Error = ({ isReloading, error404 }) => {
       {error404 ? (
         <img src={error404Img} alt="" className="error-img" />
       ) : (
-        <img src={bugImg} alt="" className="error-img" />
+        <img src={errorImg} alt="" className="error-img" />
       )}
 
       <h1>Oops, Something went wrong</h1>

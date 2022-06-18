@@ -26,9 +26,11 @@ const Quiz = () => {
     const data = fetch(url)
       .then((data) => data.json())
       .then((data) => {
-        const { newQuestionsObj } = useMakeQuestions(data.results);
+        const newQuestionsObj = useMakeQuestions(data.results);
 
         if (!data.results.length) throw new Error();
+
+        console.log(newQuestionsObj);
 
         setQuestions(newQuestionsObj);
 
@@ -152,6 +154,7 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
+      {console.log(questions)}
       {isModalOpen && (
         <ResultsModal
           setIsModalOpen={setIsModalOpen}
