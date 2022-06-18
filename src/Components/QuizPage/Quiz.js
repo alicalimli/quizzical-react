@@ -6,7 +6,7 @@ import ResultsModal from "../ResultsModal.js/ResultsModal";
 import Questions from "../Questions/Questions";
 import Error from "../Error/Error";
 
-import createQuestions from "../../Hooks/createQuestions";
+import useMakeQuestions from "../../Hooks/useMakeQuestions";
 
 import "./Quiz.css";
 
@@ -26,7 +26,7 @@ const Quiz = () => {
     const data = fetch(url)
       .then((data) => data.json())
       .then((data) => {
-        const newQuestionsObj = createQuestions(data.results);
+        const { newQuestionsObj } = useMakeQuestions(data.results);
 
         if (!data.results.length) throw new Error();
 
