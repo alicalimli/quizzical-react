@@ -2,11 +2,16 @@
   /* Background Colors */
   --primary-bg-color: white;
   --secondary-bg-color: #f5f7fb;
+
   --tertiary-bg-color: #dee2e6;
   --quartenary-bg-color: #495057;
 
   /* Text Colors */
   --primary-text-color: #111;
+  --secondary-text-color: #293264;
+
+  --tooltip-text-color: #6470ac;
+
   --footer-text-color: #343a40;
 
   /* Accent Colors */
@@ -18,11 +23,16 @@
   /* Background Colors */
   --primary-bg-color: black;
   --secondary-bg-color: #111;
+
   --tertiary-bg-color: #222;
   --quartenary-bg-color: #adb5bd;
 
   /* Text Colors */
   --primary-text-color: white;
+  --secondary-text-color: #293264;
+
+  --tooltip-text-color: #6470ac;
+
   --footer-text-color: #adb5bd;
 
   /* Accent Colors */
