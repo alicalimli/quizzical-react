@@ -42,23 +42,24 @@ const Start = () => {
   };
 
   return (
-    <motion.div
-      animate={{ scale: 1 }}
-      initial={{ scale: 0.8 }}
-      transition={{ type: "spring", duration: 0.3 }}
-      className="start-page"
-    >
+    <div className="start-page">
       {isPending && <LoadingSpinner />}
       {errorMsg && <ErrorPage isReloading="true" />}
       {categories.length ? (
-        <StartForm
-          categories={categories}
-          categoriesData={localCache.categories}
-        />
+        <motion.div
+          animate={{ scale: 1 }}
+          initial={{ scale: 0.8 }}
+          transition={{ type: "spring", duration: 0.3 }}
+        >
+          <StartForm
+            categories={categories}
+            categoriesData={localCache.categories}
+          />
+        </motion.div>
       ) : (
         ""
       )}
-    </motion.div>
+    </div>
   );
 };
 
