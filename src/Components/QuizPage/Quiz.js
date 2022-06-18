@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Questions from "../Questions/Questions";
-import createQuestions from "../../Hooks/createQuestions";
+
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import ResultsModal from "../ResultsModal.js/ResultsModal";
+import Questions from "../Questions/Questions";
 import Error from "../Error/Error";
 
+import createQuestions from "../../Hooks/createQuestions";
+
 import "./Quiz.css";
-import ResultsModal from "../ResultsModal.js/ResultsModal";
 
 const Quiz = () => {
   const [answers, setAnswers] = useState({});
@@ -19,11 +21,6 @@ const Quiz = () => {
 
   let { difficulty, categoryName, category } = useParams();
   const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
-
-  useEffect(() => {
-    setIsPending(true);
-    dataFetch(url);
-  }, [url]);
 
   const dataFetch = function (url) {
     const data = fetch(url)
@@ -87,15 +84,12 @@ const Quiz = () => {
   };
 
   const checkAnswers = function () {
-    console.log(questions);
     const checkAnswerBtn = document.querySelector(".btn-check-answers");
     if (!quizScore) {
       const quizzesContainer = document.querySelector(".quizzes-container");
       const chosenAnswers = document.querySelectorAll(
         ".quiz-answer-btn.active"
       );
-
-      console.log(chosenAnswers);
 
       if (Object.keys(chosenAnswers).length < questions.length) {
         setBtnTextContent("Please answer every questions!");
@@ -138,11 +132,19 @@ const Quiz = () => {
       setQuizScore(score);
       setIsModalOpen(true);
     } else {
-      category = "asdsd";
       playAgainHandler();
       setBtnTextContent("Check Answers");
     }
   };
+
+  useEffect(() => {
+    setIsPending(true);
+    dataFetch(url);
+
+    return () => {
+      setIsPending(false);
+    };
+  }, [url]);
 
   return (
     <div className="quiz-page">
@@ -156,8 +158,11 @@ const Quiz = () => {
           playAgainHandler={playAgainHandler}
         />
       )}
+
       {errorMsg && <Error />}
+
       {isPending && <LoadingSpinner />}
+
       {questions.length ? (
         <div className="quizzes-container">
           <Link className="back-btn btn-hv btn-outline" to="/">
