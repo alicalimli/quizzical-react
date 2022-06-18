@@ -155,7 +155,12 @@ const Quiz = () => {
   }, [url]);
 
   return (
-    <div className="quiz-page">
+    <motion.div
+      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: -1000 }}
+      exit={{ opacity: 0, x: -1000 }}
+      className="quiz-page"
+    >
       {isModalOpen && (
         <ResultsModal
           setIsModalOpen={setIsModalOpen}
@@ -197,7 +202,7 @@ const Quiz = () => {
           </button>
         </div>
       ) : null}
-    </div>
+    </motion.div>
   );
 };
 
