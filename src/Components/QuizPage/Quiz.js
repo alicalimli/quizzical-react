@@ -69,7 +69,7 @@ const Quiz = () => {
     setQuestions([]);
   };
 
-  const playAgainHandler = () => {
+  const playAgainHandler = function () {
     if (!document.querySelector(".quizzes-container")) return;
 
     const quizAnswerBtns = document.querySelectorAll(".quiz-answer-btn");
