@@ -8,11 +8,16 @@ import { FaMoon } from "react-icons/fa";
 import { StrictMode } from "react";
 
 const App = () => {
+  const toggleDarkMode = () => {
+    const body = document.body;
+    body.classList.toggle("darkmode");
+  };
+
   return (
     <StrictMode>
       <BrowserRouter>
         <div className="App">
-          <button className="darkmode-btn">
+          <button onClick={toggleDarkMode} className="darkmode-btn">
             <FaMoon />
           </button>
           <div className="content">
