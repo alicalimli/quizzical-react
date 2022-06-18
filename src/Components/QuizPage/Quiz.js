@@ -6,6 +6,8 @@ import ResultsModal from "../ResultsModal.js/ResultsModal";
 import Questions from "../Questions/Questions";
 import Error from "../Error/Error";
 
+import { motion } from "framer-motion";
+
 import useMakeQuestions from "../../Hooks/useMakeQuestions";
 
 import "./Quiz.css";
@@ -154,7 +156,6 @@ const Quiz = () => {
 
   return (
     <div className="quiz-page">
-      {console.log(questions)}
       {isModalOpen && (
         <ResultsModal
           setIsModalOpen={setIsModalOpen}
@@ -182,7 +183,9 @@ const Quiz = () => {
             />
           )}
           {quizScore !== null ? (
-            <h2 className="score-text">{`You scored ${quizScore} / ${questions.length} correct answers.`}</h2>
+            <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
+              <h2 className="score-text">{`You scored ${quizScore} / ${questions.length} correct answers.`}</h2>
+            </motion.div>
           ) : (
             ""
           )}

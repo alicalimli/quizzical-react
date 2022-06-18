@@ -9,6 +9,9 @@ const Modal = ({ children, setIsModalOpen }) => {
   useKeyDown(() => {
     setIsModalOpen(false);
   }, "Escape");
+  useKeyDown(() => {
+    setIsModalOpen(true);
+  }, "q");
 
   return createPortal(
     <div className="modal-container"> {children} </div>,

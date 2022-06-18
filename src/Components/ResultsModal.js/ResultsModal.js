@@ -13,10 +13,10 @@ const ResultsModal = ({
   playAgainHandler,
 }) => {
   return (
-    <Modal>
+    <Modal setIsModalOpen={setIsModalOpen}>
       <motion.div
         animate={{ scale: 1 }}
-        initial={{ scale: 0.5 }}
+        initial={{ scale: 0.8 }}
         transition={{ type: "spring", duration: 0.3 }}
         className="play-again-modal"
       >
