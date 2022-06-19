@@ -13,8 +13,6 @@ const StartForm = ({ categories }) => {
 
   const [quizInfo, setQuizInfo] = useState(useContext(quizInfoContext));
 
-  console.log(quizInfo);
-
   const navigate = useNavigate();
 
   const formActionHandler = (e) => {
@@ -28,6 +26,8 @@ const StartForm = ({ categories }) => {
         categoryName: categoryName,
       })
     );
+
+    console.log(quizInfo);
 
     navigate(`/quiz`);
   };
