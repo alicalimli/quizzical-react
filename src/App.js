@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Start from "./Pages/StartPage/Start";
 import Quiz from "./Pages/QuizPage/Quiz";
+import Header from "./Components/Header/Header";
 import Error from "./Pages/Error/Error";
 
 export const quizInfoContext = createContext({});
@@ -23,6 +24,7 @@ const App = () => {
       <BrowserRouter>
         <quizInfoContext.Provider value={quizInfoState}>
           <div className="App">
+            <Header />
             <div className="content">
               <Routes>
                 <Route path="/quiz" element={<Quiz />} />

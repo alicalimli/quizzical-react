@@ -6,6 +6,8 @@ import { BsFillSunFill } from "react-icons/bs";
 import useLocalStorage from "../../Hooks/useLocalStorage";
 import useGetLocalData from "../../Hooks/useGetLocalData";
 
+import "./Header.css";
+
 const Header = () => {
   const { data: darkMode, setData: setDarkMode } = useGetLocalData("darkmode");
 
