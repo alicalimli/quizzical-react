@@ -27,7 +27,7 @@ const StartForm = ({ categories }) => {
       })
     );
 
-    navigate(`/quiz/${difficulty}/${categoryName}/${category}`);
+    navigate(`/quiz`);
   };
 
   const handleControlledInputs = (e) => {

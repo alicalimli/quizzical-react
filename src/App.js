@@ -60,10 +60,7 @@ const App = () => {
             </button>
             <div className="content">
               <Routes>
-                <Route
-                  path="/quiz/:difficulty/:categoryName/:category"
-                  element={<Quiz />}
-                />
+                <Route path="/quiz" element={<Quiz />} />
                 <Route path="/" element={<Start />} />
                 <Route path="*" element={<Error error404="true" />} />
               </Routes>
