@@ -18,6 +18,15 @@ const StartForm = ({ categories }) => {
 
   const formActionHandler = (e) => {
     e.preventDefault();
+
+    setQuizInfo(
+      Object.assign(quizInfo, {
+        difficulty: difficulty,
+        category: category,
+        categoryName: categoryName,
+      })
+    );
+
     navigate(`/quiz/${difficulty}/${categoryName}/${category}`);
   };
 

@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import ResultsModal from "../../Components/ResultsModal.js/ResultsModal";
 import Questions from "../../Components/Questions/Questions";
 import Error from "../Error/Error";
 
-import { motion } from "framer-motion";
-
 import useMakeQuestions from "../../Hooks/useMakeQuestions";
+
+import { quizInfoContext } from "../../App";
 
 import "./Quiz.css";
 
 const Quiz = () => {
-  let { difficulty, categoryName, category } = useParams();
+  const { difficulty, categoryName, category } = useContext(quizInfoContext);
   const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
+  console.log(url);
 
   const [answers, setAnswers] = useState({});
   const [quizScore, setQuizScore] = useState(null);
