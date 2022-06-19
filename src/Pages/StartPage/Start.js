@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import StartForm from "../StartForm/StartForm";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+
+import StartForm from "../../Components/StartForm/StartForm";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
 import ErrorPage from "../Error/Error";
 
 import "./Start.css";

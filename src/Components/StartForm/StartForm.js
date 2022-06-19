@@ -1,12 +1,18 @@
 import "./StartForm.css";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { quizInfoContext } from "../../App";
 
 const StartForm = ({ categories }) => {
   const [difficulty, setDifficulty] = useState("easy");
   const [categoryName, setCategoryName] = useState();
   const [category, setCategory] = useState();
+
+  const [quizInfo, setQuizInfo] = useState(useContext(quizInfoContext));
+
+  console.log(quizInfo);
 
   const navigate = useNavigate();
 

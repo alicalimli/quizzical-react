@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
-import ResultsModal from "../ResultsModal.js/ResultsModal";
-import Questions from "../Questions/Questions";
+import LoadingSpinner from "../../Components/LoadingSpinner/LoadingSpinner";
+import ResultsModal from "../../Components/ResultsModal.js/ResultsModal";
+import Questions from "../../Components/Questions/Questions";
 import Error from "../Error/Error";
 
 import { motion } from "framer-motion";
