@@ -1,9 +1,10 @@
 import "./StartForm.css";
 
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { quizInfoContext } from "../../App";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 
 const StartForm = ({ categories }) => {
   const [difficulty, setDifficulty] = useState("easy");

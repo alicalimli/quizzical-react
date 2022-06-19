@@ -1,7 +1,7 @@
-const useLocalStorage = (name, data) => {
-  const quizzicalData = {};
+const quizzicalData = {};
 
-  quizzicalData[name] = data;
+const useLocalStorage = (dataObject) => {
+  Object.assign(quizzicalData, dataObject);
 
   localStorage.setItem("quizzicalData", JSON.stringify(quizzicalData));
 };

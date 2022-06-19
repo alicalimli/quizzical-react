@@ -27,7 +27,9 @@ const Header = () => {
   useEffect(() => {
     toggleDarkMode();
 
-    return useLocalStorage("darkmode", darkMode || false);
+    useLocalStorage({ test: true });
+
+    return useLocalStorage({ darkmode: darkMode || false });
   }, [darkMode, setDarkMode]);
 
   return (
