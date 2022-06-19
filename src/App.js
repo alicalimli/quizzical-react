@@ -9,16 +9,29 @@ import { BsFillSunFill } from "react-icons/bs";
 
 import { StrictMode } from "react";
 import useLocalStorage from "./Hooks/useLocalStorage";
+import useGetLocalData from "./Hooks/useGetLocalData";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
 
-  useEffect(() => {
+  toggleDarkMode = () => {
     const body = document.body;
     const darkmodeBtn = body.querySelector(".darkmode-btn");
 
-    darkmodeBtn.classList.toggle("active");
-    body.classList.toggle("darkmode");
+    const isDarkMode = useGetLocalData("darkmode");
+
+    if (isDarkMode) {
+      darkmodeBtn.classList.add("active");
+      body.classList.add("darkmode");
+    } else {
+      darkmodeBtn.classList.remove("active");
+      body.classList.remove("darkmode");
+    }
+  };
+
+  useEffect(() => {
+    toggleDarkMode();
+
     return () => {
       useLocalStorage("darkmode", darkMode);
     };
