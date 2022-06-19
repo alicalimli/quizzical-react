@@ -1,5 +1,9 @@
 const useLocalStorage = (name, data) => {
-  localStorage.setItem(name, JSON.stringify(data));
+  const quizzicalData = {};
+
+  quizzicalData[name] = data;
+
+  localStorage.setItem("quizzicalData", JSON.stringify(quizzicalData));
 };
 
 export default useLocalStorage;
