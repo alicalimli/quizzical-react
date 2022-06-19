@@ -1,4 +1,4 @@
-const quizzicalData = {};
+const quizzicalData = JSON.parse(localStorage.getItem("quizzicalData"));
 
 const useLocalStorage = (dataObject) => {
   Object.assign(quizzicalData, dataObject);

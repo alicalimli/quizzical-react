@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 import { quizInfoContext } from "../../App";
 import useLocalStorage from "../../Hooks/useLocalStorage";
+import useGetLocalData from "../../Hooks/useGetLocalData";
 
 const StartForm = ({ categories }) => {
   const [difficulty, setDifficulty] = useState("easy");
   const [categoryName, setCategoryName] = useState();
-  const [name, setName] = useState("");
+  const { data: name, setData: setName } = useGetLocalData("name");
   const [category, setCategory] = useState();
 
   const [quizInfo, setQuizInfo] = useState(useContext(quizInfoContext));
@@ -30,6 +31,14 @@ const StartForm = ({ categories }) => {
 
     navigate(`/quiz`);
   };
+
+  useEffect(() => {
+    useLocalStorage({
+      name: name,
+      difficulty: difficulty,
+      category: category,
+    });
+  }, [category, name, difficulty]);
 
   const handleControlledInputs = (e) => {
     // Takes the text of whatever is the content of the selected option
@@ -54,6 +63,7 @@ const StartForm = ({ categories }) => {
           <input
             type="text"
             id="name"
+            value={name}
             placeholder="name"
             onChange={(e) => setName(e.target.value)}
             onBlur={(e) => setName(e.target.value)}
