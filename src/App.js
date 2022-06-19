@@ -12,15 +12,13 @@ import useLocalStorage from "./Hooks/useLocalStorage";
 import useGetLocalData from "./Hooks/useGetLocalData";
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const { data: darkMode, setData: setDarkMode } = useGetLocalData("darkmode");
 
-  toggleDarkMode = () => {
+  const toggleDarkMode = () => {
     const body = document.body;
     const darkmodeBtn = body.querySelector(".darkmode-btn");
 
-    const isDarkMode = useGetLocalData("darkmode");
-
-    if (isDarkMode) {
+    if (darkMode) {
       darkmodeBtn.classList.add("active");
       body.classList.add("darkmode");
     } else {
@@ -32,9 +30,7 @@ const App = () => {
   useEffect(() => {
     toggleDarkMode();
 
-    return () => {
-      useLocalStorage("darkmode", darkMode);
-    };
+    return useLocalStorage("darkmode", darkMode || false);
   }, [darkMode, setDarkMode]);
 
   return (
@@ -42,7 +38,9 @@ const App = () => {
       <BrowserRouter>
         <div className="App">
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={() => {
+              setDarkMode(!darkMode);
+            }}
             className="darkmode-btn"
           >
             <FaMoon className="moon-icon" />
