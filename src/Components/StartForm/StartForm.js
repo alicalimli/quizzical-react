@@ -27,8 +27,6 @@ const StartForm = ({ categories }) => {
       })
     );
 
-    console.log(quizInfo);
-
     navigate(`/quiz`);
   };
 

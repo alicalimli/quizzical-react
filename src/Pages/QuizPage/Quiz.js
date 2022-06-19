@@ -17,8 +17,6 @@ const Quiz = () => {
   const { difficulty, category } = useContext(quizInfoContext);
   const url = `https://opentdb.com/api.php?amount=5&category=${category}&type=multiple&difficulty=${difficulty}`;
 
-  console.log(useContext(quizInfoContext), "sdagwgweg");
-
   const [answers, setAnswers] = useState({});
   const [quizScore, setQuizScore] = useState(null);
   const [isPending, setIsPending] = useState(false);

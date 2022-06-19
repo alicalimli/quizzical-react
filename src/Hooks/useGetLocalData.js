@@ -8,7 +8,6 @@ const useGetLocalData = (key) => {
     return setData(localData);
   }, [key]);
 
-  console.log(data);
   return { data, setData };
 };
 
