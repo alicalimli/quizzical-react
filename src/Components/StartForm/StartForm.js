@@ -8,10 +8,11 @@ import useLocalStorage from "../../Hooks/useLocalStorage";
 import useGetLocalData from "../../Hooks/useGetLocalData";
 
 const StartForm = ({ categories }) => {
-  const [difficulty, setDifficulty] = useState("easy");
   const [categoryName, setCategoryName] = useState();
   const { data: name, setData: setName } = useGetLocalData("name");
-  const [category, setCategory] = useState();
+  const { data: category, setData: setCategory } = useGetLocalData("category");
+  const { data: difficulty, setData: setDifficulty } =
+    useGetLocalData("difficulty");
 
   const [quizInfo, setQuizInfo] = useState(useContext(quizInfoContext));
 
@@ -73,6 +74,7 @@ const StartForm = ({ categories }) => {
           Category
           <select
             required
+            value={category}
             id="select-category"
             onChange={handleControlledInputs}
             onBlur={handleControlledInputs}
@@ -97,6 +99,7 @@ const StartForm = ({ categories }) => {
           Difficulty
           <select
             id="select-difficulty"
+            value={difficulty}
             onChange={(e) => setDifficulty(e.target.value)}
             onBlur={(e) => setDifficulty(e.target.value)}
           >
