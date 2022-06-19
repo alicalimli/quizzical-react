@@ -8,6 +8,7 @@ import { quizInfoContext } from "../../App";
 const StartForm = ({ categories }) => {
   const [difficulty, setDifficulty] = useState("easy");
   const [categoryName, setCategoryName] = useState();
+  const [name, setName] = useState("");
   const [category, setCategory] = useState();
 
   const [quizInfo, setQuizInfo] = useState(useContext(quizInfoContext));
@@ -48,6 +49,16 @@ const StartForm = ({ categories }) => {
         <p>Answer fun trivia questions! </p>
       </div>
       <form className="quiz-form" onSubmit={formActionHandler}>
+        <label htmlFor="name">
+          Name
+          <input
+            type="text"
+            id="name"
+            placeholder="name"
+            onChange={(e) => setName(e.target.value)}
+            onBlur={(e) => setName(e.target.value)}
+          />
+        </label>
         <label htmlFor="select-category">
           Category
           <select
