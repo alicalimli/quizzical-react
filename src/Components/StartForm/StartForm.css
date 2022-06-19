@@ -32,7 +32,7 @@
 .quiz-form select,
 .quiz-form input {
   color: var(--secondary-text-color);
-  padding: 0.5rem 0;
+  padding: 0.3rem 0;
   font-size: 1.2rem;
   border-radius: 5px;
 }

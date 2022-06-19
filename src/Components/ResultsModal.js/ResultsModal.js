@@ -14,7 +14,7 @@ const ResultsModal = ({
   questions,
   playAgainHandler,
 }) => {
-  const { difficulty, categoryName } = useContext(quizInfoContext);
+  const { difficulty, categoryName, name } = useContext(quizInfoContext);
 
   return (
     <Modal setIsModalOpen={setIsModalOpen}>
@@ -31,7 +31,9 @@ const ResultsModal = ({
           Back
         </button>
         <h2>
-          {quizScore > 2 ? "Congratulations! 👏‍" : "Better luck next time! 🫂"}
+          {quizScore > 2
+            ? `Congratulations ${name}! 👏‍`
+            : `Better luck next time ${name}! 🫂`}
         </h2>
         <p>{`You Scored ${quizScore} / ${questions.length} correct answers.`}</p>
         <p>Category: {categoryName}</p>

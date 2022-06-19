@@ -22,6 +22,7 @@ const StartForm = ({ categories }) => {
 
     setQuizInfo(
       Object.assign(quizInfo, {
+        name: name,
         difficulty: difficulty,
         category: category,
         categoryName: categoryName,
