@@ -1,17 +1,21 @@
+import Modal from "../Modal/Modal";
+
+import { useContext } from "react";
+
 import { motion } from "framer-motion";
 
-import Modal from "../Modal/Modal";
+import { quizInfoContext } from "../../App";
 
 import "./ResultsModal.css";
 
 const ResultsModal = ({
   setIsModalOpen,
   quizScore,
-  categoryName,
-  difficulty,
   questions,
   playAgainHandler,
 }) => {
+  const { difficulty, categoryName } = useContext(quizInfoContext);
+
   return (
     <Modal setIsModalOpen={setIsModalOpen}>
       <motion.div

@@ -166,8 +166,6 @@ const Quiz = () => {
         <ResultsModal
           setIsModalOpen={setIsModalOpen}
           quizScore={quizScore}
-          categoryName={categoryName}
-          difficulty={difficulty}
           questions={questions}
           playAgainHandler={playAgainHandler}
         />
