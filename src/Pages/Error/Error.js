@@ -23,9 +23,9 @@ const Error = ({ isReloading, error404 }) => {
   return (
     <div className="error-container">
       {error404 ? (
-        <img src={error404Img} alt="" className="error-img" />
+        <img src={error404Img} alt="error 404" className="error-img" />
       ) : (
-        <img src={errorImg} alt="" className="error-img" />
+        <img src={errorImg} alt="error" className="error-img" />
       )}
 
       <h1>Oops, Something went wrong</h1>
