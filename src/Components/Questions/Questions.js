@@ -1,13 +1,21 @@
 import "./Questions.css";
 
 const Questions = ({ questions, answersBtnHandler, questionsElementsRef }) => {
+  questionsElementsRef.current = [];
+
+  const pushToQuestionsRef = (el) => {
+    if (el && !questionsElementsRef.current.includes(el)) {
+      questionsElementsRef.current.push(el);
+    }
+  };
+
   return questions.map((data, index) => {
     const questionData = data[`questionNumber-${index + 1}`];
-    console.log(questionsElementsRef.current);
+    console.log(questionsElementsRef);
     return (
       <div
         data-question-number={index + 1}
-        ref={questionsElementsRef}
+        ref={pushToQuestionsRef}
         key={questionData.questionText}
         className="quiz-container"
       >
