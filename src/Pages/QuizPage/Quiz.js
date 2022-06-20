@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -24,6 +24,8 @@ const Quiz = () => {
   const [questions, setQuestions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [btnTextContent, setBtnTextContent] = useState("Check Answers!");
+
+  const questionElementsRef = useRef([]);
 
   const dataFetch = function (url) {
     const data = fetch(url)
@@ -183,6 +185,7 @@ const Quiz = () => {
           {questions.length && (
             <Questions
               questions={questions}
+              questionsElementsRef={questionElementsRef}
               answersBtnHandler={answersBtnHandler}
             />
           )}

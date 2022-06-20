@@ -1,11 +1,13 @@
 import "./Questions.css";
 
-const Questions = ({ questions, answersBtnHandler }) => {
+const Questions = ({ questions, answersBtnHandler, questionsElementsRef }) => {
   return questions.map((data, index) => {
     const questionData = data[`questionNumber-${index + 1}`];
+    console.log(questionsElementsRef.current);
     return (
       <div
         data-question-number={index + 1}
+        ref={questionsElementsRef}
         key={questionData.questionText}
         className="quiz-container"
       >
