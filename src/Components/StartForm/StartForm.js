@@ -58,7 +58,11 @@ const StartForm = ({ categories }) => {
         <h1>Quizzical</h1>
         <p>Answer fun trivia questions! </p>
       </div>
-      <form className="quiz-form" onSubmit={formActionHandler}>
+      <form
+        className="quiz-form"
+        autoComplete="off"
+        onSubmit={formActionHandler}
+      >
         <label htmlFor="name">
           Name
           <input
