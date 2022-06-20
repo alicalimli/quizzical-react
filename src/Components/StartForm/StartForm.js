@@ -99,9 +99,13 @@ const StartForm = ({ categories }) => {
           <select
             id="select-difficulty"
             value={difficulty}
+            required
             onChange={(e) => setDifficulty(e.target.value)}
             onBlur={(e) => setDifficulty(e.target.value)}
           >
+            <option value="" default>
+              Please select a difficulty
+            </option>
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>

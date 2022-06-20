@@ -33,6 +33,8 @@ const Quiz = () => {
       .then((data) => {
         const newQuestionsObj = useMakeQuestions(data.results);
 
+        console.log(url);
+
         if (!data.results.length) throw new Error();
 
         console.log(newQuestionsObj);
