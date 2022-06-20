@@ -69,6 +69,7 @@ const StartForm = ({ categories }) => {
             type="text"
             id="name"
             value={name}
+            required
             placeholder="name"
             onChange={(e) => setName(e.target.value)}
             onBlur={(e) => setName(e.target.value)}
@@ -83,13 +84,7 @@ const StartForm = ({ categories }) => {
             onChange={handleControlledInputs}
             onBlur={handleControlledInputs}
           >
-            <option
-              value=""
-              style={{ display: "none" }}
-              default
-              selected
-              disabled
-            >
+            <option value="" default>
               Please select a category
             </option>
             {categories.map((category) => (

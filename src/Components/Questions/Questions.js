@@ -11,7 +11,6 @@ const Questions = ({ questions, answersBtnHandler, questionsElementsRef }) => {
 
   return questions.map((data, index) => {
     const questionData = data[`questionNumber-${index + 1}`];
-    console.log(questionsElementsRef);
     return (
       <div
         data-question-number={index + 1}
