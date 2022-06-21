@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useMakeQuestions = function (questionsObj) {
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState(questionsObj);
 
   const setNewQuestions = (questionsObj) => {
     const newQuestionsObj = questionsObj.map((questionData, i) => {
