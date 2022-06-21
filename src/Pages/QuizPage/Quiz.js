@@ -21,25 +21,22 @@ const Quiz = () => {
   const [quizScore, setQuizScore] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [questions, setQuestions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [btnTextContent, setBtnTextContent] = useState("Check Answers!");
 
   const questionElementsRef = useRef([]);
 
+  const [questions, setQuestions] = useMakeQuestions([]);
+
   const dataFetch = function (url) {
     const data = fetch(url)
       .then((data) => data.json())
       .then((data) => {
-        const newQuestionsObj = useMakeQuestions(data.results);
-
         console.log(url);
 
         if (!data.results.length) throw new Error();
 
-        console.log(newQuestionsObj);
-
-        setQuestions(newQuestionsObj);
+        setQuestions(data.results);
 
         setIsPending(false);
       })
