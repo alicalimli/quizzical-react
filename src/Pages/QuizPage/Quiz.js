@@ -24,8 +24,6 @@ const Quiz = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [btnTextContent, setBtnTextContent] = useState("Check Answers!");
 
-  const questionElementsRef = useRef([]);
-
   const [questions, setQuestions] = useMakeQuestions([]);
 
   const dataFetch = function (url) {
@@ -184,7 +182,6 @@ const Quiz = () => {
           {questions.length && (
             <Questions
               questions={questions}
-              questionsElementsRef={questionElementsRef}
               answersBtnHandler={answersBtnHandler}
             />
           )}
