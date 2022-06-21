@@ -8,6 +8,10 @@
   margin: auto;
 }
 
+.error-container * {
+  color: var(--primary-text-color);
+}
+
 .error-img {
   max-width: 35rem;
 }
