@@ -1,11 +1,10 @@
 import "./StartForm.css";
 
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { quizInfoContext } from "../../App";
 import useLocalStorage from "../../Hooks/useLocalStorage";
-import useGetLocalData from "../../Hooks/useGetLocalData";
 
 const StartForm = ({ categories }) => {
   const [categoryName, setCategoryName] = useState();
