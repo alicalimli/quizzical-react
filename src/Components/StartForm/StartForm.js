@@ -9,10 +9,9 @@ import useGetLocalData from "../../Hooks/useGetLocalData";
 
 const StartForm = ({ categories }) => {
   const [categoryName, setCategoryName] = useState();
-  const { data: name, setData: setName } = useGetLocalData("name");
-  const { data: category, setData: setCategory } = useGetLocalData("category");
-  const { data: difficulty, setData: setDifficulty } =
-    useGetLocalData("difficulty");
+  const [name, setName] = useLocalStorage("name", "");
+  const [category, setCategory] = useLocalStorage("category", "");
+  const [difficulty, setDifficulty] = useLocalStorage("difficulty", "");
 
   const [quizInfo, setQuizInfo] = useState(useContext(quizInfoContext));
 
@@ -32,14 +31,6 @@ const StartForm = ({ categories }) => {
 
     navigate(`/quiz`);
   };
-
-  useEffect(() => {
-    // useLocalStorage({
-    //   name: name,
-    //   difficulty: difficulty,
-    //   category: category,
-    // });
-  }, [category, name, difficulty]);
 
   const handleControlledInputs = (e) => {
     // Takes the text of whatever is the content of the selected option
