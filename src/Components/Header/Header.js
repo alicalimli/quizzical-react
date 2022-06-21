@@ -4,7 +4,6 @@ import { FaMoon } from "react-icons/fa";
 import { BsFillSunFill } from "react-icons/bs";
 
 import useLocalStorage from "../../Hooks/useLocalStorage";
-import useGetLocalData from "../../Hooks/useGetLocalData";
 
 import "./Header.css";
 
@@ -26,7 +25,6 @@ const Header = () => {
 
   useEffect(() => {
     toggleDarkMode();
-    setDarkMode(darkMode);
   }, [darkMode, setDarkMode]);
 
   return (
