@@ -1,11 +1,18 @@
-import { WEBSITE_NAME } from "../config";
+import { useState } from "react";
 
-const websiteData = JSON.parse(localStorage.getItem(WEBSITE_NAME)) || {};
+const useLocalStorage = (key, initialValue) => {
+  const [storedData, setStoredData] = useState(() => {
+    const data = JSON.parse(window.localStorage.getItem(key));
 
-const useLocalStorage = (dataObject) => {
-  Object.assign(websiteData, dataObject);
+    return data || initialValue;
+  });
 
-  localStorage.setItem(WEBSITE_NAME, JSON.stringify(websiteData));
+  const setValue = (value) => {
+    setStoredData(value);
+    window.localStorage.setItem(key, JSON.stringify(value));
+  };
+
+  return [storedData, setValue];
 };
 
 export default useLocalStorage;

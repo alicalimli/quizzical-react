@@ -9,7 +9,7 @@ import useGetLocalData from "../../Hooks/useGetLocalData";
 import "./Header.css";
 
 const Header = () => {
-  const { data: darkMode, setData: setDarkMode } = useGetLocalData("darkmode");
+  const [darkMode, setDarkMode] = useLocalStorage("darkmode", false);
 
   const toggleDarkMode = () => {
     const body = document.body;
@@ -26,8 +26,7 @@ const Header = () => {
 
   useEffect(() => {
     toggleDarkMode();
-
-    return useLocalStorage({ darkmode: darkMode || false });
+    setDarkMode(darkMode);
   }, [darkMode, setDarkMode]);
 
   return (

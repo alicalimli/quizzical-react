@@ -34,11 +34,11 @@ const StartForm = ({ categories }) => {
   };
 
   useEffect(() => {
-    useLocalStorage({
-      name: name,
-      difficulty: difficulty,
-      category: category,
-    });
+    // useLocalStorage({
+    //   name: name,
+    //   difficulty: difficulty,
+    //   category: category,
+    // });
   }, [category, name, difficulty]);
 
   const handleControlledInputs = (e) => {

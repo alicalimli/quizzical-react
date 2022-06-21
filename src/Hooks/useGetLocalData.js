@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { WEBSITE_NAME } from "../config";
-
 const useGetLocalData = (key) => {
   const [data, setData] = useState();
 
   useEffect(() => {
-    const localData = JSON.parse(localStorage.getItem(WEBSITE_NAME)) || {};
+    const localData = JSON.parse(localStorage.getItem(key)) || {};
 
     return setData(localData[key]);
   }, [key]);
