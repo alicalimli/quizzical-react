@@ -8,6 +8,7 @@ import Start from "./Pages/StartPage/Start";
 import Quiz from "./Pages/QuizPage/Quiz";
 import Header from "./Components/Header/Header";
 import Error from "./Pages/Error/Error";
+import Footer from "./Components/Footer/Footer";
 
 export const quizInfoContext = createContext({});
 
@@ -32,6 +33,7 @@ const App = () => {
                 <Route path="*" element={<Error error404="true" />} />
               </Routes>
             </div>
+            <Footer />
           </div>
         </quizInfoContext.Provider>
       </BrowserRouter>
