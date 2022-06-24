@@ -11,6 +11,7 @@ footer p {
 }
 
 footer a {
+  color: var(--primary-text-color);
   text-decoration: underline;
   text-underline-offset: 0.2rem;
 }
