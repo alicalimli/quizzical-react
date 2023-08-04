@@ -2,23 +2,6 @@
 
 A Reactive trivia quiz application.
 
-## Deployed URL
-
-[Quizzical](https://quizzical-ali.netlify.app/)
-
-## Special thanks to:
-
-[ahmed](https://twitter.com/ahmedrowaihi) and
-[andrej](https://twitter.com/reactive_dude) for helping me out.
-
-Quick start:
-
-```
-$ yarn # npm install
-$ yarn build # npm run build
-
-```
-
 ## Supporting Scrimba
 
 Since 2017, we have created over 20 free courses on Scrimba, and we're going to
